@@ -1,5 +1,5 @@
 // ============================================
-// ADMIN PANEL - Real API Version
+// ADMIN PANEL - Real API Version with Debugging
 // ============================================
 
 const API_BASE = 'https://korsatk-admin.kareemraafat2017.workers.dev/api';
@@ -107,9 +107,21 @@ async function loadTabContent() {
     }
     
     try {
-        const response = await fetch(`${API_BASE}/${currentTab}`);
+        const url = `${API_BASE}/${currentTab}`;
+        console.log('🔍 Fetching URL:', url);
+        
+        const response = await fetch(url);
+        console.log('📡 Response status:', response.status);
+        
+        if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+        
         const data = await response.json();
+        console.log('📦 Data received:', data);
+        
         const items = Array.isArray(data) ? data : (data[currentTab] || []);
+        console.log('📋 Items array:', items);
         
         let html = `
             <button class="add-btn" onclick="openAddModal()">+ Add New</button>
@@ -121,26 +133,30 @@ async function loadTabContent() {
                     <tbody>
         `;
         
-        items.forEach(item => {
-            const title = item.title_en || item.name_en || item.title || `Item ${item.id}`;
-            html += `
-                <tr>
-                    <td>${item.id}</td>
-                    <td>${escapeHtml(title)}</td>
-                    <td class="actions">
-                        <button class="edit-btn" onclick="editItem(${item.id})">Edit</button>
-                        <button class="delete-btn" onclick="deleteItem(${item.id})">Delete</button>
-                    </td>
-                </tr>
-            `;
-        });
+        if (items.length === 0) {
+            html += `<tr><td colspan="3" style="text-align: center;">No data found. Click "Add New" to create your first item.</td></tr>`;
+        } else {
+            items.forEach(item => {
+                const title = item.title_en || item.name_en || item.title || `Item ${item.id}`;
+                html += `
+                    <tr>
+                        <td>${item.id}</td>
+                        <td>${escapeHtml(title)}</td>
+                        <td class="actions">
+                            <button class="edit-btn" onclick="editItem(${item.id})">Edit</button>
+                            <button class="delete-btn" onclick="deleteItem(${item.id})">Delete</button>
+                        </td>
+                    </tr>
+                `;
+            });
+        }
         
         html += `</tbody>赶t</div>`;
         container.innerHTML = html;
         
     } catch (error) {
-        console.error('Error loading tab content:', error);
-        container.innerHTML = '<p class="error">Error loading data. Please refresh.</p>';
+        console.error('❌ Error loading tab content:', error);
+        container.innerHTML = `<p class="error">Error loading data: ${error.message}</p>`;
     }
 }
 
@@ -152,6 +168,7 @@ async function loadDashboard() {
     
     for (const section of sections) {
         try {
+            console.log(`🔍 Fetching dashboard stats for: ${section}`);
             const response = await fetch(`${API_BASE}/${section}`);
             const data = await response.json();
             const items = Array.isArray(data) ? data : (data[section] || []);
@@ -163,6 +180,7 @@ async function loadDashboard() {
                 </div>
             `;
         } catch (error) {
+            console.error(`Error fetching ${section}:`, error);
             html += `
                 <div class="stat-card">
                     <h3>${section.charAt(0).toUpperCase() + section.slice(1)}</h3>
@@ -223,6 +241,7 @@ function buildFormFields(item) {
 async function deleteItem(id) {
     if (confirm('Are you sure you want to delete this item?')) {
         try {
+            console.log(`🗑️ Deleting item ${id} from ${currentTab}`);
             await fetch(`${API_BASE}/${currentTab}/${id}`, { method: 'DELETE' });
             loadTabContent();
         } catch (error) {
@@ -250,6 +269,7 @@ document.getElementById('itemForm').addEventListener('submit', async (e) => {
     
     try {
         if (currentEditId) {
+            console.log(`✏️ Updating item ${currentEditId} in ${currentTab}`);
             data.id = currentEditId;
             await fetch(`${API_BASE}/${currentTab}/${currentEditId}`, {
                 method: 'PUT',
@@ -257,6 +277,7 @@ document.getElementById('itemForm').addEventListener('submit', async (e) => {
                 headers: { 'Content-Type': 'application/json' }
             });
         } else {
+            console.log(`➕ Adding new item to ${currentTab}`);
             await fetch(`${API_BASE}/${currentTab}`, {
                 method: 'POST',
                 body: JSON.stringify(data),
@@ -314,4 +335,6 @@ if (window.location.pathname.includes('admin.html')) {
 }
 
 // Load initial dashboard
+console.log('🚀 Admin Panel starting...');
+console.log('📡 API_BASE:', API_BASE);
 loadDashboard();
