@@ -1,4 +1,7 @@
 // partners.js - Auto Slider + Draggable + Links
+// Reads data from API instead of JSON file
+
+const API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/partners';
 
 let slider;
 let isDown = false;
@@ -88,7 +91,7 @@ function stopAutoScroll() {
 
 async function loadPartners() {
     try {
-        const response = await fetch('/data/partners.json');
+        const response = await fetch(API_URL);
         const partners = await response.json();
         const container = document.getElementById('partnersSlider');
         
@@ -107,6 +110,7 @@ async function loadPartners() {
             container.appendChild(item);
         });
         
+        // Duplicate for seamless scroll
         partners.forEach(partner => {
             const item = document.createElement('div');
             item.className = 'partner-item';
@@ -122,7 +126,7 @@ async function loadPartners() {
         startAutoScroll();
         
     } catch (error) {
-        console.error('Error loading partners:', error);
+        console.error('Error loading partners from API:', error);
         loadStaticPartners();
     }
 }
