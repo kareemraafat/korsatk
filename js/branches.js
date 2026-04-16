@@ -1,8 +1,10 @@
-// branches.js - Load branches from JSON
+// branches.js - Load branches from API
+
+const API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/branches';
 
 async function loadBranches() {
     try {
-        const response = await fetch('/data/branches.json');
+        const response = await fetch(API_URL);
         const branches = await response.json();
         const container = document.getElementById('branchesGrid');
         
@@ -43,7 +45,7 @@ async function loadBranches() {
         });
         
     } catch (error) {
-        console.error('Error loading branches:', error);
+        console.error('Error loading branches from API:', error);
         loadStaticBranches();
     }
 }
