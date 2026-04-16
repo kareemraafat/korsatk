@@ -1,20 +1,13 @@
-// ============================================
-// LATEST BLOG - Display latest 3 posts on homepage
-// Reads data from API instead of JSON file
-// ============================================
+// latest-blog.js - Display latest 3 posts on homepage
 
-const API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/blog';
+const LATEST_BLOG_API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/blog';
 
-// Load latest blog posts from API
 async function loadLatestBlog() {
     try {
-        const response = await fetch(API_URL);
+        const response = await fetch(LATEST_BLOG_API_URL);
         const data = await response.json();
-        
-        // Handle both formats: { posts: [] } or direct array []
         const posts = data.posts || data;
         
-        // Validate that posts is an array
         if (!Array.isArray(posts)) {
             console.error('Posts data is not an array:', posts);
             loadStaticBlogPosts();
@@ -24,7 +17,6 @@ async function loadLatestBlog() {
         const container = document.getElementById('latestBlogGrid');
         if (!container) return;
         
-        // Sort by date (newest first) and get latest 3
         const sortedPosts = [...posts].sort((a, b) => new Date(b.date) - new Date(a.date));
         const latestPosts = sortedPosts.slice(0, 3);
         
@@ -32,6 +24,11 @@ async function loadLatestBlog() {
                         document.documentElement.dir === 'rtl';
         
         container.innerHTML = '';
+        
+        if (latestPosts.length === 0) {
+            container.innerHTML = '<div class="no-data">No blog posts yet</div>';
+            return;
+        }
         
         latestPosts.forEach(post => {
             const title = isArabic ? (post.title_ar || post.title_en) : post.title_en;
@@ -62,14 +59,11 @@ async function loadLatestBlog() {
         });
         
     } catch (error) {
-        console.error('Error loading latest blog posts from API:', error);
+        console.error('Error loading latest blog posts:', error);
         loadStaticBlogPosts();
     }
 }
 
-// ============================================
-// FALLBACK STATIC DATA (if API fails)
-// ============================================
 function loadStaticBlogPosts() {
     const container = document.getElementById('latestBlogGrid');
     if (!container) return;
@@ -143,14 +137,8 @@ function loadStaticBlogPosts() {
     });
 }
 
-// ============================================
-// REFRESH ON LANGUAGE CHANGE
-// ============================================
 window.refreshLatestBlog = function() {
     loadLatestBlog();
 };
 
-// ============================================
-// INITIALIZE ON PAGE LOAD
-// ============================================
 loadLatestBlog();
