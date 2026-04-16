@@ -2,18 +2,21 @@
 // EVENTS PAGE - Background Image Cards + Load More
 // Social Media Icons (Facebook, Instagram, TikTok)
 // Upcoming Events Badge
+// Reads data from API instead of JSON file
 // ============================================
+
+const API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/events';
 
 let allEvents = [];
 let visibleCount = 4; // Start with 4 events (2 rows of 2)
 let isLoading = false;
 
 // ============================================
-// LOAD EVENTS FROM JSON
+// LOAD EVENTS FROM API
 // ============================================
 async function loadEvents() {
     try {
-        const response = await fetch('/data/events.json');
+        const response = await fetch(API_URL);
         const data = await response.json();
         allEvents = data.events || data;
         
@@ -29,7 +32,7 @@ async function loadEvents() {
         displayEvents();
         
     } catch (error) {
-        console.error('Error loading events:', error);
+        console.error('Error loading events from API:', error);
         loadStaticEvents();
     }
 }
@@ -127,7 +130,7 @@ function setupLoadMore() {
 }
 
 // ============================================
-// FALLBACK STATIC EVENTS
+// FALLBACK STATIC EVENTS (if API fails)
 // ============================================
 function loadStaticEvents() {
     const isArabic = document.body.classList.contains('rtl') || 
