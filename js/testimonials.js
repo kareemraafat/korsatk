@@ -1,54 +1,18 @@
 // testimonials.js - Load testimonials from API with language support
 
-const API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/testimonials';
+const TESTIMONIALS_API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/testimonials';
 
 let currentTestimonialsData = [];
 
 async function loadTestimonialsData() {
     try {
-        const response = await fetch(API_URL);
+        const response = await fetch(TESTIMONIALS_API_URL);
         const data = await response.json();
         currentTestimonialsData = data.testimonials || data;
         displayTestimonials();
     } catch (error) {
         console.error('Error loading testimonials from API:', error);
-        // Fallback static data
-        currentTestimonialsData = [
-            {
-                id: 1,
-                name_en: "John Doe",
-                name_ar: "جون دو",
-                title_en: "Software Engineer",
-                title_ar: "مهندس برمجيات",
-                text_en: "The English course was amazing! My speaking skills improved dramatically. The instructors are very professional and supportive.",
-                text_ar: "دورة الإنجليزية كانت رائعة! مهاراتي في التحدث تحسنت بشكل كبير. المعلمون محترفون جداً وداعمون.",
-                rating: 5,
-                image: "https://randomuser.me/api/portraits/men/1.jpg"
-            },
-            {
-                id: 2,
-                name_en: "Jane Smith",
-                name_ar: "جين سميث",
-                title_en: "Marketing Specialist",
-                title_ar: "أخصائية تسويق",
-                text_en: "I got my ICDL certificate thanks to MBA Academy. The materials were clear and the support was excellent.",
-                text_ar: "حصلت على شهادة ICDL بفضل أكاديمية MBA. المواد كانت واضحة والدعم كان ممتازاً.",
-                rating: 5,
-                image: "https://randomuser.me/api/portraits/women/1.jpg"
-            },
-            {
-                id: 3,
-                name_en: "Mike Wilson",
-                name_ar: "مايك ويلسون",
-                title_en: "Freelancer",
-                title_ar: "مستقل",
-                text_en: "The Digital Marketing course gave me real-world skills. I started my own freelancing business.",
-                text_ar: "دورة التسويق الرقمي أعطتني مهارات عملية. بدأت مشروعي الخاص في العمل الحر.",
-                rating: 4,
-                image: "https://randomuser.me/api/portraits/men/2.jpg"
-            }
-        ];
-        displayTestimonials();
+        loadStaticTestimonials();
     }
 }
 
@@ -61,27 +25,25 @@ function displayTestimonials() {
     
     container.innerHTML = '';
     
+    if (!currentTestimonialsData || currentTestimonialsData.length === 0) {
+        container.innerHTML = '<div class="no-data">No testimonials yet</div>';
+        return;
+    }
+    
     currentTestimonialsData.forEach(testimonial => {
-        const name = isArabic ? testimonial.name_ar : testimonial.name_en;
-        const title = isArabic ? testimonial.title_ar : testimonial.title_en;
-        const text = isArabic ? testimonial.text_ar : testimonial.text_en;
+        const name = isArabic ? (testimonial.name_ar || testimonial.name_en) : testimonial.name_en;
+        const title = isArabic ? (testimonial.title_ar || testimonial.title_en) : testimonial.title_en;
+        const text = isArabic ? (testimonial.text_ar || testimonial.text_en) : testimonial.text_en;
         
-        // Generate stars
         let stars = '';
         for (let i = 1; i <= 5; i++) {
-            if (i <= testimonial.rating) {
-                stars += '<i class="fas fa-star"></i>';
-            } else {
-                stars += '<i class="far fa-star"></i>';
-            }
+            stars += i <= testimonial.rating ? '<i class="fas fa-star"></i>' : '<i class="far fa-star"></i>';
         }
         
         const card = document.createElement('div');
         card.className = 'testimonial-card';
         card.innerHTML = `
-            <div class="quote-icon">
-                <i class="fas fa-quote-right"></i>
-            </div>
+            <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
             <div class="rating">${stars}</div>
             <p class="testimonial-text">"${text}"</p>
             <div class="student-info">
@@ -96,7 +58,45 @@ function displayTestimonials() {
     });
 }
 
-// Export function for language.js to call
+function loadStaticTestimonials() {
+    currentTestimonialsData = [
+        {
+            id: 1,
+            name_en: "John Doe",
+            name_ar: "جون دو",
+            title_en: "Software Engineer",
+            title_ar: "مهندس برمجيات",
+            text_en: "The English course was amazing! My speaking skills improved dramatically.",
+            text_ar: "دورة الإنجليزية كانت رائعة! مهاراتي في التحدث تحسنت بشكل كبير.",
+            rating: 5,
+            image: "https://randomuser.me/api/portraits/men/1.jpg"
+        },
+        {
+            id: 2,
+            name_en: "Jane Smith",
+            name_ar: "جين سميث",
+            title_en: "Marketing Specialist",
+            title_ar: "أخصائية تسويق",
+            text_en: "I got my ICDL certificate thanks to MBA Academy.",
+            text_ar: "حصلت على شهادة ICDL بفضل أكاديمية MBA.",
+            rating: 5,
+            image: "https://randomuser.me/api/portraits/women/1.jpg"
+        },
+        {
+            id: 3,
+            name_en: "Mike Wilson",
+            name_ar: "مايك ويلسون",
+            title_en: "Freelancer",
+            title_ar: "مستقل",
+            text_en: "The Digital Marketing course gave me real-world skills.",
+            text_ar: "دورة التسويق الرقمي أعطتني مهارات عملية.",
+            rating: 4,
+            image: "https://randomuser.me/api/portraits/men/2.jpg"
+        }
+    ];
+    displayTestimonials();
+}
+
 window.refreshTestimonials = function() {
     if (currentTestimonialsData.length > 0) {
         displayTestimonials();
@@ -105,5 +105,4 @@ window.refreshTestimonials = function() {
     }
 };
 
-// Load on page load
 loadTestimonialsData();
