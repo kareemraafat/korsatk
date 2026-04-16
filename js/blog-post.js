@@ -1,6 +1,9 @@
 // ============================================
 // BLOG POST PAGE - Single Post with Share Buttons
+// Reads data from API instead of JSON file
 // ============================================
+
+const API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/blog';
 
 let allPosts = [];
 
@@ -15,7 +18,7 @@ const categoryNames = {
 };
 
 // ============================================
-// LOAD SINGLE POST
+// LOAD SINGLE POST FROM API
 // ============================================
 async function loadBlogPost() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -27,9 +30,12 @@ async function loadBlogPost() {
     }
     
     try {
-        const response = await fetch('/data/blog.json');
+        // First, get all posts from API
+        const response = await fetch(API_URL);
         const data = await response.json();
         allPosts = data.posts || data;
+        
+        // Find the specific post by ID
         const post = allPosts.find(p => Number(p.id) === Number(postId));
         
         if (!post) {
@@ -40,7 +46,7 @@ async function loadBlogPost() {
         displayBlogPost(post);
         
     } catch (error) {
-        console.error('Error loading post:', error);
+        console.error('Error loading post from API:', error);
         loadStaticBlogPost(postId);
     }
 }
@@ -111,7 +117,7 @@ function displayBlogPost(post) {
 }
 
 // ============================================
-// FALLBACK STATIC POST (if JSON fails)
+// FALLBACK STATIC POST (if API fails)
 // ============================================
 function loadStaticBlogPost(postId) {
     const staticPosts = {
