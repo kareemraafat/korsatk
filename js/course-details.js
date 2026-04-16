@@ -1,13 +1,17 @@
 // ============================================
 // COURSE DETAILS PAGE - DYNAMIC VERSION
+// Reads data from API instead of JSON files
 // Handles: Course display, Related courses, Register modal with branches
 // ============================================
+
+const COURSES_API = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/courses';
+const BRANCHES_API = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/branches';
 
 let allCourses = [];
 let allBranches = [];
 
 // ============================================
-// LOAD COURSE DATA FROM JSON
+// LOAD COURSE DATA FROM API
 // ============================================
 async function loadCourseDetails() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -19,8 +23,8 @@ async function loadCourseDetails() {
     }
     
     try {
-        // Fetch courses data
-        const response = await fetch('/data/courses.json');
+        // Fetch courses data from API
+        const response = await fetch(COURSES_API);
         const data = await response.json();
         allCourses = data.courses || data;
         
@@ -41,21 +45,21 @@ async function loadCourseDetails() {
         initRegisterModal(course);
         
     } catch (error) {
-        console.error('Error loading course:', error);
+        console.error('Error loading course from API:', error);
         document.getElementById('courseDetailsContainer').innerHTML = '<div class="error-message">Error loading course data</div>';
     }
 }
 
 // ============================================
-// LOAD BRANCHES FROM JSON
+// LOAD BRANCHES FROM API
 // ============================================
 async function loadBranches() {
     try {
-        const response = await fetch('/data/branches.json');
+        const response = await fetch(BRANCHES_API);
         allBranches = await response.json();
     } catch (error) {
-        console.error('Error loading branches:', error);
-        // Fallback branches if JSON fails
+        console.error('Error loading branches from API:', error);
+        // Fallback branches if API fails
         allBranches = [
             { id: 1, name_en: "Cairo Branch", name_ar: "فرع القاهرة" },
             { id: 2, name_en: "Alexandria Branch", name_ar: "فرع الإسكندرية" }
