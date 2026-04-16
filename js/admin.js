@@ -2,7 +2,7 @@
 // ADMIN PANEL - Real API Version with Debugging
 // ============================================
 
-const API_BASE = 'https://korsatk-admin.kareemraafat2017.workers.dev/api';
+const API_BASE = '/api';
 let currentTab = 'dashboard';
 let currentEditId = null;
 
