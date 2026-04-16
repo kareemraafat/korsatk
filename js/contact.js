@@ -1,10 +1,18 @@
 // ============================================
-// CONTACT PAGE - Load dynamic contact info from settings.json
+// CONTACT PAGE - Load dynamic contact info from API
 // ============================================
+
+const API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/settings';
 
 async function loadContactInfo() {
     try {
-        const response = await fetch('/data/settings.json');
+        const response = await fetch(API_URL);
+        
+        if (!response.ok) {
+            console.log('API not available, using static HTML data');
+            return;
+        }
+        
         const data = await response.json();
         
         const isArabic = document.body.classList.contains('rtl') || 
@@ -32,7 +40,7 @@ async function loadContactInfo() {
         }
         
     } catch (error) {
-        console.error('Error loading contact info:', error);
+        console.log('Contact info API not available, using static HTML data');
     }
 }
 
@@ -57,6 +65,7 @@ function setupContactForm() {
             e.preventDefault();
             alert('Message sent successfully! We will contact you soon.');
             formEn.reset();
+            const modal = document.getElementById('contactModal');
             if (modal) modal.style.display = 'none';
         });
     }
@@ -66,6 +75,7 @@ function setupContactForm() {
             e.preventDefault();
             alert('تم إرسال الرسالة بنجاح! سنتواصل معك قريباً.');
             formAr.reset();
+            const modal = document.getElementById('contactModal');
             if (modal) modal.style.display = 'none';
         });
     }
