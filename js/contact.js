@@ -1,11 +1,13 @@
 // ============================================
-// CONTACT PAGE - Load dynamic contact info
+// CONTACT PAGE - Load dynamic contact info from API
 // ============================================
 
-// Load contact information from JSON
+const API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/settings';
+
+// Load contact information from API
 async function loadContactInfo() {
     try {
-        const response = await fetch('/data/contact.json');
+        const response = await fetch(API_URL);
         const data = await response.json();
         
         const isArabic = document.body.classList.contains('rtl') || 
@@ -13,22 +15,22 @@ async function loadContactInfo() {
         
         // Update phone
         const phoneEl = document.getElementById('contactPhone');
-        if (phoneEl) phoneEl.innerText = data.phone;
+        if (phoneEl && data.phone) phoneEl.innerText = data.phone;
         
         // Update email
         const emailEl = document.getElementById('contactEmail');
-        if (emailEl) emailEl.innerText = data.email;
+        if (emailEl && data.email) emailEl.innerText = data.email;
         
         // Update address based on language
         const addressEl = document.getElementById('contactAddress');
         if (addressEl) {
-            addressEl.innerText = isArabic ? data.address_ar : data.address_en;
+            addressEl.innerText = isArabic ? (data.address_ar || data.address_en) : (data.address_en || data.address_ar);
         }
         
         // Update working hours based on language
         const hoursEl = document.getElementById('contactHours');
         if (hoursEl) {
-            hoursEl.innerText = isArabic ? data.working_hours_ar : data.working_hours_en;
+            hoursEl.innerText = isArabic ? (data.working_hours_ar || data.working_hours_en) : (data.working_hours_en || data.working_hours_ar);
         }
         
         // Update map if URL exists
@@ -40,7 +42,7 @@ async function loadContactInfo() {
         }
         
     } catch (error) {
-        console.error('Error loading contact info:', error);
+        console.error('Error loading contact info from API:', error);
         // Fallback to static data already in HTML
     }
 }
