@@ -1,101 +1,119 @@
-// partners.js - Auto Slider + Draggable + Links
-// Reads data from API
+// ============================================
+// PARTNERS SLIDER - Auto Slider + Draggable + Links
+// Uses unique global variable to avoid conflicts
+// ============================================
 
-const API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/partners';
+const PARTNERS_API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/partners';
 
-let slider;
-let isDown = false;
-let startX;
-let scrollLeft;
-let autoScrollInterval;
-let isDragging = false;
+let partnersSlider;
+let partnersIsDown = false;
+let partnersStartX;
+let partnersScrollLeft;
+let partnersAutoScrollInterval;
+let partnersIsDragging = false;
 
-function initDragScroll() {
-    slider = document.getElementById('partnersSlider');
-    if (!slider) return;
+// Initialize drag scroll functionality
+function initPartnersDragScroll() {
+    partnersSlider = document.getElementById('partnersSlider');
+    if (!partnersSlider) return;
     
-    slider.addEventListener('mousedown', (e) => {
-        isDown = true;
-        isDragging = false;
-        slider.style.cursor = 'grabbing';
-        startX = e.pageX - slider.offsetLeft;
-        scrollLeft = slider.scrollLeft;
-        stopAutoScroll();
+    partnersSlider.addEventListener('mousedown', (e) => {
+        partnersIsDown = true;
+        partnersIsDragging = false;
+        partnersSlider.style.cursor = 'grabbing';
+        partnersStartX = e.pageX - partnersSlider.offsetLeft;
+        partnersScrollLeft = partnersSlider.scrollLeft;
+        stopPartnersAutoScroll();
     });
     
-    slider.addEventListener('mouseleave', () => {
-        isDown = false;
-        slider.style.cursor = 'grab';
-        startAutoScroll();
+    partnersSlider.addEventListener('mouseleave', () => {
+        partnersIsDown = false;
+        partnersSlider.style.cursor = 'grab';
+        startPartnersAutoScroll();
     });
     
-    slider.addEventListener('mouseup', () => {
-        isDown = false;
-        slider.style.cursor = 'grab';
-        startAutoScroll();
+    partnersSlider.addEventListener('mouseup', () => {
+        partnersIsDown = false;
+        partnersSlider.style.cursor = 'grab';
+        startPartnersAutoScroll();
     });
     
-    slider.addEventListener('mousemove', (e) => {
-        if (!isDown) return;
-        isDragging = true;
+    partnersSlider.addEventListener('mousemove', (e) => {
+        if (!partnersIsDown) return;
+        partnersIsDragging = true;
         e.preventDefault();
-        const x = e.pageX - slider.offsetLeft;
-        const walk = (x - startX) * 1.5;
-        slider.scrollLeft = scrollLeft - walk;
+        const x = e.pageX - partnersSlider.offsetLeft;
+        const walk = (x - partnersStartX) * 1.5;
+        partnersSlider.scrollLeft = partnersScrollLeft - walk;
     });
     
-    slider.addEventListener('touchstart', (e) => {
-        isDown = true;
-        isDragging = false;
-        startX = e.touches[0].pageX - slider.offsetLeft;
-        scrollLeft = slider.scrollLeft;
-        stopAutoScroll();
+    partnersSlider.addEventListener('touchstart', (e) => {
+        partnersIsDown = true;
+        partnersIsDragging = false;
+        partnersStartX = e.touches[0].pageX - partnersSlider.offsetLeft;
+        partnersScrollLeft = partnersSlider.scrollLeft;
+        stopPartnersAutoScroll();
     });
     
-    slider.addEventListener('touchmove', (e) => {
-        if (!isDown) return;
-        isDragging = true;
+    partnersSlider.addEventListener('touchmove', (e) => {
+        if (!partnersIsDown) return;
+        partnersIsDragging = true;
         e.preventDefault();
-        const x = e.touches[0].pageX - slider.offsetLeft;
-        const walk = (x - startX) * 1.5;
-        slider.scrollLeft = scrollLeft - walk;
+        const x = e.touches[0].pageX - partnersSlider.offsetLeft;
+        const walk = (x - partnersStartX) * 1.5;
+        partnersSlider.scrollLeft = partnersScrollLeft - walk;
     });
     
-    slider.addEventListener('touchend', () => {
-        isDown = false;
-        startAutoScroll();
+    partnersSlider.addEventListener('touchend', () => {
+        partnersIsDown = false;
+        startPartnersAutoScroll();
     });
 }
 
-function startAutoScroll() {
-    if (autoScrollInterval) clearInterval(autoScrollInterval);
+function startPartnersAutoScroll() {
+    if (partnersAutoScrollInterval) clearInterval(partnersAutoScrollInterval);
     
-    autoScrollInterval = setInterval(() => {
-        if (slider && !isDown && !isDragging) {
-            if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) {
-                slider.scrollTo({ left: 0, behavior: 'smooth' });
+    partnersAutoScrollInterval = setInterval(() => {
+        if (partnersSlider && !partnersIsDown && !partnersIsDragging) {
+            if (partnersSlider.scrollLeft + partnersSlider.clientWidth >= partnersSlider.scrollWidth - 10) {
+                partnersSlider.scrollTo({ left: 0, behavior: 'smooth' });
             } else {
-                slider.scrollBy({ left: 250, behavior: 'smooth' });
+                partnersSlider.scrollBy({ left: 250, behavior: 'smooth' });
             }
         }
-        isDragging = false;
+        partnersIsDragging = false;
     }, 3000);
 }
 
-function stopAutoScroll() {
-    if (autoScrollInterval) {
-        clearInterval(autoScrollInterval);
-        autoScrollInterval = null;
+function stopPartnersAutoScroll() {
+    if (partnersAutoScrollInterval) {
+        clearInterval(partnersAutoScrollInterval);
+        partnersAutoScrollInterval = null;
     }
 }
 
 async function loadPartners() {
     try {
-        const response = await fetch(API_URL);
+        const response = await fetch(PARTNERS_API_URL);
+        
+        // Check if response is ok and has data
+        if (!response.ok) {
+            console.log('Partners API returned', response.status, '- using static data');
+            loadStaticPartners();
+            return;
+        }
+        
         const partners = await response.json();
         const container = document.getElementById('partnersSlider');
         
         if (!container) return;
+        
+        // Check if data is empty or not an array
+        if (!Array.isArray(partners) || partners.length === 0) {
+            console.log('No partners data available - using static data');
+            loadStaticPartners();
+            return;
+        }
         
         container.innerHTML = '';
         
@@ -103,8 +121,8 @@ async function loadPartners() {
             const item = document.createElement('div');
             item.className = 'partner-item';
             item.innerHTML = `
-                <a href="${partner.url}" target="_blank" class="partner-link" rel="noopener noreferrer">
-                    <img class="partner-logo" src="${partner.logo}" alt="${partner.name}">
+                <a href="${partner.url || '#'}" target="_blank" class="partner-link" rel="noopener noreferrer">
+                    <img class="partner-logo" src="${partner.logo}" alt="${partner.name || 'Partner'}">
                 </a>
             `;
             container.appendChild(item);
@@ -115,15 +133,15 @@ async function loadPartners() {
             const item = document.createElement('div');
             item.className = 'partner-item';
             item.innerHTML = `
-                <a href="${partner.url}" target="_blank" class="partner-link" rel="noopener noreferrer">
-                    <img class="partner-logo" src="${partner.logo}" alt="${partner.name}">
+                <a href="${partner.url || '#'}" target="_blank" class="partner-link" rel="noopener noreferrer">
+                    <img class="partner-logo" src="${partner.logo}" alt="${partner.name || 'Partner'}">
                 </a>
             `;
             container.appendChild(item);
         });
         
-        initDragScroll();
-        startAutoScroll();
+        initPartnersDragScroll();
+        startPartnersAutoScroll();
         
     } catch (error) {
         console.error('Error loading partners from API:', error);
@@ -168,10 +186,13 @@ function loadStaticPartners() {
         container.appendChild(item);
     });
     
-    initDragScroll();
-    startAutoScroll();
+    initPartnersDragScroll();
+    startPartnersAutoScroll();
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+// Initialize when DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', loadPartners);
+} else {
     loadPartners();
-});
+}
