@@ -1,20 +1,17 @@
 // featured-courses.js - Display featured courses only from API
 
-const API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/courses';
+const FEATURED_COURSES_API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/courses';
 
 async function loadFeaturedCourses() {
     try {
-        const response = await fetch(API_URL);
+        const response = await fetch(FEATURED_COURSES_API_URL);
         const data = await response.json();
         const courses = data.courses || data;
         const container = document.getElementById('featuredGrid');
         
         if (!container) return;
         
-        // Filter only featured courses
         const featuredCourses = courses.filter(course => course.featured === true);
-        
-        // Take only first 3 featured courses
         const topFeatured = featuredCourses.slice(0, 3);
         
         const isArabic = document.body.classList.contains('rtl') || 
@@ -65,7 +62,7 @@ async function loadFeaturedCourses() {
         });
         
     } catch (error) {
-        console.error('Error loading featured courses from API:', error);
+        console.error('Error loading featured courses:', error);
         loadStaticFeaturedCourses();
     }
 }
@@ -82,8 +79,8 @@ function loadStaticFeaturedCourses() {
             id: 1,
             title_en: "Business Management Mastery",
             title_ar: "إدارة الأعمال المتقدمة",
-            description_en: "Learn the essential skills to become a successful business manager and leader.",
-            description_ar: "تعلم المهارات الأساسية لتصبح مدير أعمال وقائد ناجح.",
+            description_en: "Learn the essential skills to become a successful business manager.",
+            description_ar: "تعلم المهارات الأساسية لتصبح مدير أعمال ناجح.",
             price: 299,
             level_en: "Advanced",
             level_ar: "متقدم",
@@ -94,8 +91,8 @@ function loadStaticFeaturedCourses() {
             id: 2,
             title_en: "Digital Marketing Pro",
             title_ar: "احتراف التسويق الرقمي",
-            description_en: "Master SEO, social media, and content marketing strategies.",
-            description_ar: "أتقن استراتيجيات تحسين محركات البحث والسوشيال ميديا والتسويق بالمحتوى.",
+            description_en: "Master SEO, social media, and content marketing.",
+            description_ar: "أتقن استراتيجيات التسويق الرقمي.",
             price: 249,
             level_en: "Intermediate",
             level_ar: "متوسط",
@@ -107,7 +104,7 @@ function loadStaticFeaturedCourses() {
             title_en: "Leadership & HR",
             title_ar: "القيادة وإدارة الموارد البشرية",
             description_en: "Develop leadership skills and learn modern HR practices.",
-            description_ar: "طور مهاراتك القيادية وتعلم ممارسات الموارد البشرية الحديثة.",
+            description_ar: "طور مهاراتك القيادية وتعلم ممارسات الموارد البشرية.",
             price: 279,
             level_en: "Advanced",
             level_ar: "متقدم",
@@ -152,7 +149,6 @@ function loadStaticFeaturedCourses() {
     });
 }
 
-// Refresh when language changes
 window.refreshFeaturedCourses = function() {
     loadFeaturedCourses();
 };
