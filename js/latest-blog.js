@@ -1,11 +1,14 @@
 // ============================================
 // LATEST BLOG - Display latest 3 posts on homepage
+// Reads data from API instead of JSON file
 // ============================================
 
-// Load latest blog posts from JSON
+const API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/blog';
+
+// Load latest blog posts from API
 async function loadLatestBlog() {
     try {
-        const response = await fetch('/data/blog.json');
+        const response = await fetch(API_URL);
         const data = await response.json();
         
         // Handle both formats: { posts: [] } or direct array []
@@ -59,13 +62,13 @@ async function loadLatestBlog() {
         });
         
     } catch (error) {
-        console.error('Error loading latest blog posts:', error);
+        console.error('Error loading latest blog posts from API:', error);
         loadStaticBlogPosts();
     }
 }
 
 // ============================================
-// FALLBACK STATIC DATA (if JSON fails)
+// FALLBACK STATIC DATA (if API fails)
 // ============================================
 function loadStaticBlogPosts() {
     const container = document.getElementById('latestBlogGrid');
