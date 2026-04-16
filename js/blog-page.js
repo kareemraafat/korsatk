@@ -1,6 +1,9 @@
 // ============================================
 // BLOG PAGE - Dynamic Blog with Categories & Search
+// Reads data from API instead of JSON file
 // ============================================
+
+const API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/blog';
 
 let allPosts = [];
 let allCategories = [];
@@ -16,11 +19,11 @@ const categoryNames = {
 };
 
 // ============================================
-// LOAD BLOG DATA FROM JSON
+// LOAD BLOG DATA FROM API
 // ============================================
 async function loadBlogData() {
     try {
-        const response = await fetch('/data/blog.json');
+        const response = await fetch(API_URL);
         const data = await response.json();
         allPosts = data.posts || data;
         
@@ -35,7 +38,7 @@ async function loadBlogData() {
         setupSearch();
         
     } catch (error) {
-        console.error('Error loading blog data:', error);
+        console.error('Error loading blog data from API:', error);
         loadStaticBlogData();
     }
 }
@@ -164,7 +167,7 @@ function setupSearch() {
 }
 
 // ============================================
-// FALLBACK STATIC DATA (if JSON fails)
+// FALLBACK STATIC DATA (if API fails)
 // ============================================
 function loadStaticBlogData() {
     const isArabic = document.body.classList.contains('rtl') || 
