@@ -1,4 +1,6 @@
-// courses-page.js - Load and filter courses
+// courses-page.js - Load and filter courses from API
+
+const API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/courses';
 
 let allCourses = [];
 let allCategories = [];
@@ -17,7 +19,7 @@ const categoryNames = {
 
 async function loadCoursesData() {
     try {
-        const response = await fetch('/data/courses.json');
+        const response = await fetch(API_URL);
         const data = await response.json();
         allCourses = data.courses || data;
         
@@ -29,7 +31,7 @@ async function loadCoursesData() {
         displayCourses(allCourses);
         
     } catch (error) {
-        console.error('Error loading courses:', error);
+        console.error('Error loading courses from API:', error);
         loadStaticCourses();
     }
 }
