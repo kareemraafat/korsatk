@@ -1,0 +1,8 @@
+[
+    { "id": 1, "name": "Tech Corp", "logo": "images/partners/techcorp.png", "url": "https://techcorp.com" },
+    { "id": 2, "name": "Global Solutions", "logo": "images/partners/global.png", "url": "https://globalsolutions.com" },
+    { "id": 3, "name": "Smart Education", "logo": "images/partners/smart-edu.png", "url": "https://smartedu.com" },
+    { "id": 4, "name": "Diamond Products", "logo": "images/partners/diamond.png", "url": "https://diamond.com" },
+    { "id": 5, "name": "Reload Caring", "logo": "images/partners/reload.png", "url": "https://reload.com" },
+    { "id": 6, "name": "Rixdot", "logo": "images/partners/rixdot.png", "url": "https://rixdot.com" }
+]

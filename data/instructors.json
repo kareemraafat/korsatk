@@ -1,0 +1,43 @@
+{
+  "instructors": [
+    {
+      "id": 1,
+      "name_en": "Dr. Sarah Johnson",
+      "name_ar": "د. سارة جونسون",
+      "title_en": "Senior English Instructor",
+      "title_ar": "كبير معلمي اللغة الإنجليزية",
+      "image": "https://placehold.co/500x500/667eea/white?text=Sarah",
+      "courses": 12,
+      "students": 850,
+      "whatsapp": "#",
+      "facebook": "#",
+      "instagram": "#"
+    },
+    {
+      "id": 2,
+      "name_en": "Prof. Michael Chen",
+      "name_ar": "أ. مايكل تشين",
+      "title_en": "Digital Marketing Expert",
+      "title_ar": "خبير التسويق الرقمي",
+      "image": "https://placehold.co/500x500/667eea/white?text=Michael",
+      "courses": 8,
+      "students": 620,
+      "whatsapp": "#",
+      "facebook": "#",
+      "instagram": "#"
+    },
+    {
+      "id": 3,
+      "name_en": "Dr. Emily Williams",
+      "name_ar": "د. إيميلي ويليامز",
+      "title_en": "HR & Leadership Coach",
+      "title_ar": "مدربة موارد بشرية وقيادة",
+      "image": "https://placehold.co/500x500/667eea/white?text=Emily",
+      "courses": 15,
+      "students": 1200,
+      "whatsapp": "#",
+      "facebook": "#",
+      "instagram": "#"
+    }
+  ]
+}

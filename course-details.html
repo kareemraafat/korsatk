@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korsatak Academy - Course Details</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">Korsatak<span>Academy</span></a>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <!-- English Links -->
+                <li class="english-content"><a href="index.html">Home</a></li>
+                <li class="english-content"><a href="courses.html" class="actived">Courses</a></li>
+                <li class="english-content"><a href="events.html">Events</a></li>
+                <li class="english-content"><a href="blog.html">Blog</a></li>
+                <li class="english-content"><a href="contact.html">Contact</a></li>
+                
+                <!-- Arabic Links -->
+                <li class="arabic-content" style="display: none;"><a href="index.html">الرئيسية</a></li>
+                <li class="arabic-content" style="display: none;"><a href="courses.html" class="actived">الكورسات</a></li>
+                <li class="arabic-content" style="display: none;"><a href="events.html">فعاليات</a></li>
+                <li class="arabic-content" style="display: none;"><a href="blog.html">المدونة</a></li>
+                <li class="arabic-content" style="display: none;"><a href="contact.html">اتصل بنا</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <a href="signin.html" class="btn-signin">Sign In</a>
+                <a href="signup.html" class="btn-signup">Sign Up</a>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== COURSE DETAILS CONTENT ========== -->
+    <!-- ========== COURSE DETAILS CONTENT ========== -->
+    <section class="course-details">
+        <div class="container">
+            <div id="courseDetailsContainer">
+                <!-- Course details will appear here from JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="english-content">
+                    <div class="footer-logo"><h3>Korsatak<span>Academy</span></h3></div>
+                    <p class="footer-description">Empowering future leaders with world-class business education and expert instructors.</p>
+                    <div class="footer-bottom"><p>&copy; 2025 Korsatak Academy. All Rights Reserved.</p></div>
+                </div>
+                <div class="arabic-content" style="display: none;">
+                    <div class="footer-logo"><h3>Korsatak<span>أكاديمية</span></h3></div>
+                    <p class="footer-description">تمكين قادة المستقبل من خلال تعليم إداري عالمي المستوى وخبراء في التدريس.</p>
+                    <div class="footer-bottom"><p>&copy; 2025 أكاديمية Korsatak. جميع الحقوق محفوظة.</p></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== FLOATING BUTTONS ========== -->
+    <button id="lang-toggle-float" class="lang-float">🇪🇬 عربي</button>
+    <a href="https://wa.me/201234567890" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- ========== REGISTER MODAL ========== -->
+<div id="registerModal" class="modal">
+    <div class="modal-content register-modal">
+        <span class="close-modal register-close">&times;</span>
+        
+        <!-- English Content -->
+        <div class="english-content">
+            <h3>Choose Registration Type</h3>
+            <div class="register-options">
+                <div class="register-option" data-type="online">
+                    <i class="fas fa-laptop-code"></i>
+                    <h4>Online Course</h4>
+                    <p>Study from anywhere, anytime</p>
+                    <span class="option-price">$299</span>
+                    <button class="select-option">Select</button>
+                </div>
+                <div class="register-option" data-type="offline">
+                    <i class="fas fa-building"></i>
+                    <h4>Offline Course</h4>
+                    <p>Attend in-person at our branches</p>
+                    <span class="option-price">$399</span>
+                    <button class="select-option">Select</button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Arabic Content -->
+        <div class="arabic-content" style="display: none;">
+            <h3>اختر نوع التسجيل</h3>
+            <div class="register-options">
+                <div class="register-option" data-type="online">
+                    <i class="fas fa-laptop-code"></i>
+                    <h4>كورس أونلاين</h4>
+                    <p>ادرس من أي مكان وفي أي وقت</p>
+                    <span class="option-price">$299</span>
+                    <button class="select-option">اختر</button>
+                </div>
+                <div class="register-option" data-type="offline">
+                    <i class="fas fa-building"></i>
+                    <h4>كورس حضوري</h4>
+                    <p>احضر شخصياً في فروعنا</p>
+                    <span class="option-price">$399</span>
+                    <button class="select-option">اختر</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ========== REGISTER FORM MODAL (after selection) ========== -->
+<div id="registerFormModal" class="modal">
+    <div class="modal-content register-form-modal">
+        <span class="close-modal form-close">&times;</span>
+        
+        <!-- English Content -->
+        <div class="english-content">
+            <h3 id="registerFormTitle">Complete Registration</h3>
+            <form id="registerForm">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="phone" placeholder="Phone Number" required>
+                </div>
+                <div class="form-group" id="branchSelectGroup" style="display: none;">
+                    <select name="branch" required>
+                        <option value="" disabled selected>Select Your Branch</option>
+                        <option value="cairo">Cairo Branch</option>
+                        <option value="alexandria">Alexandria Branch</option>
+                        <option value="giza">Giza Branch</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" placeholder="Additional Notes (optional)" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Submit Registration</button>
+            </form>
+        </div>
+        
+        <!-- Arabic Content -->
+        <div class="arabic-content" style="display: none;">
+            <h3 id="registerFormTitleAr">إكمال التسجيل</h3>
+            <form id="registerFormAr">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="الاسم كاملاً" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="البريد الإلكتروني" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="phone" placeholder="رقم الهاتف" required>
+                </div>
+                <div class="form-group" id="branchSelectGroupAr" style="display: none;">
+                    <select name="branch" required>
+                        <option value="" disabled selected>اختر الفرع</option>
+                        <option value="cairo">فرع القاهرة</option>
+                        <option value="alexandria">فرع الإسكندرية</option>
+                        <option value="giza">فرع الجيزة</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <textarea name="message" placeholder="ملاحظات إضافية (اختياري)" rows="3"></textarea>
+                </div>
+                <button type="submit" class="btn-submit">إرسال التسجيل</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script src="js/main.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/course-details.js"></script>
+</body>
+</html>

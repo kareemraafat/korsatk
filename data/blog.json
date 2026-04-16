@@ -1,0 +1,43 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title_en": "How to Master Business Management",
+      "title_ar": "كيف تتقن إدارة الأعمال",
+      "excerpt_en": "Learn the essential skills needed to become a successful business manager. This comprehensive guide covers strategic planning, leadership, and operations management.",
+      "excerpt_ar": "تعلم المهارات الأساسية اللازمة لتصبح مدير أعمال ناجح. يغطي هذا الدليل الشامل التخطيط الاستراتيجي والقيادة وإدارة العمليات.",
+      "content_en": "Full article content goes here...",
+      "content_ar": "المحتوى الكامل للمقال هنا...",
+      "date": "2025-04-15",
+      "category": "business",
+      "image": "https://placehold.co/600x400/667eea/white?text=Business",
+      "author": "Dr. Sarah Johnson"
+    },
+    {
+      "id": 2,
+      "title_en": "The Future of Online Learning",
+      "title_ar": "مستقبل التعلم عبر الإنترنت",
+      "excerpt_en": "Discover how online education is transforming the way we learn. Explore emerging trends and technologies shaping the future of education.",
+      "excerpt_ar": "اكتشف كيف يحول التعليم عبر الإنترنت طريقة تعلمنا. استكشف الاتجاهات والتقنيات الناشئة التي تشكل مستقبل التعليم.",
+      "content_en": "Full article content goes here...",
+      "content_ar": "المحتوى الكامل للمقال هنا...",
+      "date": "2025-04-10",
+      "category": "education",
+      "image": "https://placehold.co/600x400/667eea/white?text=Online+Learning",
+      "author": "Prof. Michael Chen"
+    },
+    {
+      "id": 3,
+      "title_en": "Top 10 Career Tips for 2025",
+      "title_ar": "أفضل 10 نصائح مهنية لعام 2025",
+      "excerpt_en": "Stay ahead of the competition with these career advancement tips. Learn how to network effectively and build your personal brand.",
+      "excerpt_ar": "ابق متقدماً على المنافسة مع نصائح التقدم الوظيفي هذه. تعلم كيفية التواصل بفعالية وبناء علامتك التجارية الشخصية.",
+      "content_en": "Full article content goes here...",
+      "content_ar": "المحتوى الكامل للمقال هنا...",
+      "date": "2025-04-05",
+      "category": "career",
+      "image": "https://placehold.co/600x400/667eea/white?text=Career+Tips",
+      "author": "Sarah Lee"
+    }
+  ]
+}

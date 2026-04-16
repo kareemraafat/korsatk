@@ -1,0 +1,49 @@
+{
+    "courses": [
+        {
+            "id": 1,
+            "title_en": "Business Management",
+            "title_ar": "إدارة الأعمال",
+            "description_en": "Learn essential business management skills from industry experts.",
+            "description_ar": "تعلم مهارات إدارة الأعمال الأساسية من خبراء الصناعة.",
+            "category": "business",
+            "price_online": 299,
+            "price_offline": 500,
+            "weeks": 24,
+            "level_en": "Advanced",
+            "level_ar": "متقدم",
+            "image": "https://placehold.co/800x500/667eea/white?text=Business+Management",
+            "video": "https://www.youtube.com/embed/UGyNzAI--qQ"
+        },
+        {
+            "id": 2,
+            "title_en": "Digital Marketing",
+            "title_ar": "التسويق الرقمي",
+            "description_en": "Master SEO, social media and content marketing.",
+            "description_ar": "أتقن التسويق الرقمي ومحركات البحث.",
+            "category": "marketing",
+            "price_online": 249,
+            "price_offline": 349,
+            "weeks": 20,
+            "level_en": "Intermediate",
+            "level_ar": "متوسط",
+            "image": "https://placehold.co/800x500/667eea/white?text=Digital+Marketing",
+            "video": "https://www.youtube.com/embed/UGyNzAI--qQ"
+        },
+        {
+            "id": 3,
+            "title_en": "HR Management",
+            "title_ar": "إدارة الموارد البشرية",
+            "description_en": "Learn modern HR practices and strategies.",
+            "description_ar": "تعلم ممارسات واستراتيجيات الموارد البشرية الحديثة.",
+            "category": "hr",
+            "price_online": 279,
+            "price_offline": 379,
+            "weeks": 22,
+            "level_en": "Advanced",
+            "level_ar": "متقدم",
+            "image": "https://placehold.co/800x500/667eea/white?text=HR+Management",
+            "video": "https://www.youtube.com/embed/UGyNzAI--qQ"
+        }
+    ]
+}

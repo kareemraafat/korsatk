@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "name_en": "Cairo Branch",
+        "name_ar": "فرع القاهرة",
+        "address_en": "123 Tahrir Street, Downtown, Cairo, Egypt",
+        "address_ar": "123 شارع التحرير، وسط البلد، القاهرة، مصر",
+        "phone": "+201234567890",
+        "whatsapp": "201234567890"
+    },
+    {
+        "id": 2,
+        "name_en": "Alexandria Branch",
+        "name_ar": "فرع الإسكندرية",
+        "address_en": "456 Corniche Road, Alexandria, Egypt",
+        "address_ar": "456 طريق الكورنيش، الإسكندرية، مصر",
+        "phone": "+201234567891",
+        "whatsapp": "201234567891"
+    }
+]

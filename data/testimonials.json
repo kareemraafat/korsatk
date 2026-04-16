@@ -1,0 +1,35 @@
+[
+    {
+        "id": 1,
+        "name_en": "John Doe",
+        "name_ar": "جون دو",
+        "title_en": "Software Engineer",
+        "title_ar": "مهندس برمجيات",
+        "text_en": "The English course was amazing! My speaking skills improved dramatically. The instructors are very professional and supportive. Highly recommended!",
+        "text_ar": "دورة الإنجليزية كانت رائعة! مهاراتي في التحدث تحسنت بشكل كبير. المعلمون محترفون جداً وداعمون. أنصح بها بشدة!",
+        "rating": 5,
+        "image": "https://randomuser.me/api/portraits/men/1.jpg"
+    },
+    {
+        "id": 2,
+        "name_en": "Jane Smith",
+        "name_ar": "جين سميث",
+        "title_en": "Marketing Specialist",
+        "title_ar": "أخصائية تسويق",
+        "text_en": "I got my ICDL certificate thanks to MBA Academy. The materials were clear and the support was excellent. Best decision I ever made!",
+        "text_ar": "حصلت على شهادة ICDL بفضل أكاديمية MBA. المواد كانت واضحة والدعم كان ممتازاً. أفضل قرار اتخذته على الإطلاق!",
+        "rating": 5,
+        "image": "https://randomuser.me/api/portraits/women/1.jpg"
+    },
+    {
+        "id": 3,
+        "name_en": "Mike Wilson",
+        "name_ar": "مايك ويلسون",
+        "title_en": "Freelancer",
+        "title_ar": "مستقل",
+        "text_en": "The Digital Marketing course gave me real-world skills. I started my own freelancing business right after finishing the course. Thank you!",
+        "text_ar": "دورة التسويق الرقمي أعطتني مهارات عملية. بدأت مشروعي الخاص في العمل الحر مباشرة بعد انتهاء الدورة. شكراً!",
+        "rating": 4,
+        "image": "https://randomuser.me/api/portraits/men/2.jpg"
+    }
+]

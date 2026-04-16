@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korsatak Academy - All Courses</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Extra CSS for courses page (optional) -->
+</head>
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">Korsatak<span>Academy</span></a>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <!-- English Links -->
+                <li class="english-content"><a href="index.html">Home</a></li>
+                <li class="english-content"><a href="courses.html" class="actived">Courses</a></li>
+                <li class="english-content"><a href="events.html">Events</a></li>
+                <li class="english-content"><a href="blog.html">Blog</a></li>
+                <li class="english-content"><a href="contact.html">Contact</a></li>
+                
+                <!-- Arabic Links -->
+                <li class="arabic-content" style="display: none;"><a href="index.html">الرئيسية</a></li>
+                <li class="arabic-content" style="display: none;"><a href="courses.html" class="actived">الكورسات</a></li>
+                <li class="arabic-content" style="display: none;"><a href="events.html">فعاليات</a></li>
+                <li class="arabic-content" style="display: none;"><a href="blog.html">المدونة</a></li>
+                <li class="arabic-content" style="display: none;"><a href="contact.html">اتصل بنا</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <a href="signin.html" class="btn-signin">Sign In</a>
+                <a href="signup.html" class="btn-signup">Sign Up</a>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    
+   <!-- ========== COURSES PAGE CONTENT ========== -->
+<section class="courses-page">
+    <div class="container">
+        <!-- English Header -->
+        <div class="page-header english-content">
+            <h1>Our <span>Courses</span></h1>
+            <p>Explore our wide range of professional courses designed to boost your career</p>
+        </div>
+        
+        <!-- Arabic Header -->
+        <div class="page-header arabic-content" style="display: none;">
+            <h1><span>كورسات</span>نا</h1>
+            <p>استكشف مجموعتنا الواسعة من الدورات المهنية المصممة لتعزيز مسيرتك المهنية</p>
+        </div>
+        
+        <div class="courses-layout">
+            <!-- Sidebar Filters -->
+            <aside class="courses-sidebar">
+                <h3 class="english-content">Categories</h3>
+                <h3 class="arabic-content" style="display: none;">التصنيفات</h3>
+                <ul class="categories-list" id="categoriesList">
+                    <!-- Categories will appear here from JavaScript -->
+                </ul>
+            </aside>
+            
+            <!-- Courses Grid -->
+            <div class="courses-main">
+                <div class="courses-grid-page" id="coursesGridPage">
+                    <!-- Courses will appear here from JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    
+   <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- English Footer -->
+                <div class="english-content">
+                    <div class="footer-logo">
+                        <h3>Korsatak<span>Academy</span></h3>
+                    </div>
+                    <p class="footer-description">Empowering future leaders with world-class business education and expert instructors.</p>
+                    <div class="footer-bottom">
+                        <p>&copy; 2025 Korsatak Academy. All Rights Reserved.</p>
+                    </div>
+                </div>
+                
+                <!-- Arabic Footer -->
+                <div class="arabic-content" style="display: none;">
+                    <div class="footer-logo">
+                        <h3>Korsatak<span>أكاديمية</span></h3>
+                    </div>
+                    <p class="footer-description">تمكين قادة المستقبل من خلال تعليم إداري عالمي المستوى وخبراء في التدريس.</p>
+                    <div class="footer-bottom">
+                        <p>&copy; 2025 أكاديمية Korsatak. جميع الحقوق محفوظة.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+   <!-- ========== FLOATING BUTTONS ========== -->
+        <!-- Language Button -->
+        <button id="lang-toggle-float" class="lang-float">
+            <span>AR</span>
+        </button>
+
+        <!-- WhatsApp Button -->
+        <a href="https://wa.me/201234567890" class="whatsapp-float" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+
+        <!-- Back to Top Button -->
+        <button id="backToTop" class="back-to-top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    
+    <!-- ========== SCRIPTS ========== -->
+    <script src="js/main.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/courses-page.js"></script>
+</body>
+</html>

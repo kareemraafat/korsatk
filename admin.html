@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Korsatak Academy</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <!-- Admin CSS -->
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+    <div class="admin-container">
+        <div class="admin-sidebar">
+            <div class="admin-logo">
+                <h2>Korsatak<span>Admin</span></h2>
+            </div>
+            <ul class="admin-menu">
+                <li class="active" data-tab="dashboard">📊 Dashboard</li>
+                <li data-tab="courses">📚 Courses</li>
+                <li data-tab="instructors">👨‍🏫 Instructors</li>
+                <li data-tab="testimonials">⭐ Testimonials</li>
+                <li data-tab="branches">📍 Branches</li>
+                <li data-tab="events">📅 Events</li>
+                <li data-tab="blog">📝 Blog</li>
+                <li data-tab="settings">⚙️ Site Settings</li>
+            </ul>
+        </div>
+        
+        <div class="admin-main">
+            <div class="admin-header">
+                <h1 id="pageTitle">Dashboard</h1>
+                <button id="logoutBtn" class="logout-btn">Logout</button>
+            </div>
+            
+            <div class="admin-content" id="adminContent">
+                <div class="dashboard-stats" id="dashboardStats">
+                    <div class="stat-card"><h3>Courses</h3><p id="statCourses">0</p></div>
+                    <div class="stat-card"><h3>Instructors</h3><p id="statInstructors">0</p></div>
+                    <div class="stat-card"><h3>Testimonials</h3><p id="statTestimonials">0</p></div>
+                    <div class="stat-card"><h3>Branches</h3><p id="statBranches">0</p></div>
+                    <div class="stat-card"><h3>Events</h3><p id="statEvents">0</p></div>
+                    <div class="stat-card"><h3>Blog Posts</h3><p id="statBlog">0</p></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="itemModal" class="admin-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2 id="modalTitle">Add Item</h2>
+            <form id="itemForm">
+                <div id="formFields"></div>
+                <button type="submit" class="save-btn">Save</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/admin.js"></script>
+</body>
+</html>

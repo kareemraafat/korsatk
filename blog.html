@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Korsatak Academy - Blog</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Blog Page CSS -->
+    <link rel="stylesheet" href="css/blog.css">
+</head>
+<body>
+
+    <!-- ========== NAVBAR ========== -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="index.html">Korsatak<span>Academy</span></a>
+            </div>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li class="english-content"><a href="index.html">Home</a></li>
+                <li class="english-content"><a href="courses.html">Courses</a></li>
+                <li class="english-content"><a href="events.html">Events</a></li>
+                <li class="english-content"><a href="blog.html" class="actived">Blog</a></li>
+                <li class="english-content"><a href="contact.html">Contact</a></li>
+                
+                <li class="arabic-content" style="display: none;"><a href="index.html">الرئيسية</a></li>
+                <li class="arabic-content" style="display: none;"><a href="courses.html">الكورسات</a></li>
+                <li class="arabic-content" style="display: none;"><a href="events.html">فعاليات</a></li>
+                <li class="arabic-content" style="display: none;"><a href="blog.html" class="actived">المدونة</a></li>
+                <li class="arabic-content" style="display: none;"><a href="contact.html">اتصل بنا</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <a href="signin.html" class="btn-signin">Sign In</a>
+                <a href="signup.html" class="btn-signup">Sign Up</a>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ========== BLOG PAGE CONTENT ========== -->
+    <section class="blog-page">
+        <div class="container">
+            <!-- English Header -->
+            <div class="page-header english-content">
+                <h1>Latest <span>Blog</span> Posts</h1>
+                <p>Stay updated with our latest articles and news</p>
+            </div>
+            
+            <!-- Arabic Header -->
+            <div class="page-header arabic-content" style="display: none;">
+                <h1>أحدث <span>المقالات</span></h1>
+                <p>تابع أحدث مقالاتنا وأخبارنا</p>
+            </div>
+            
+            <div class="blog-layout">
+                <!-- Sidebar -->
+                <aside class="blog-sidebar">
+                    <div class="sidebar-widget">
+                        <h3 class="english-content">Categories</h3>
+                        <h3 class="arabic-content" style="display: none;">التصنيفات</h3>
+                        <ul class="categories-list" id="blogCategoriesList">
+                            <li><a href="#" data-category="all" class="active-cat">All <span id="allCount">0</span></a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="sidebar-widget">
+                        <h3 class="english-content">Search</h3>
+                        <h3 class="arabic-content" style="display: none;">البحث</h3>
+                        <div class="search-box">
+                            <input type="text" id="searchInput" placeholder="Search articles...">
+                            <button id="searchBtn"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </aside>
+                
+                <!-- Blog Grid -->
+                <div class="blog-main">
+                    <div class="blog-grid-page" id="blogGridPage">
+                        <!-- Blog posts will appear here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="english-content">
+                    <div class="footer-logo"><h3>Korsatak<span>Academy</span></h3></div>
+                    <p class="footer-description">Empowering future leaders with world-class business education and expert instructors.</p>
+                    <div class="footer-bottom"><p>&copy; 2025 Korsatak Academy. All Rights Reserved.</p></div>
+                </div>
+                <div class="arabic-content" style="display: none;">
+                    <div class="footer-logo"><h3>Korsatak<span>أكاديمية</span></h3></div>
+                    <p class="footer-description">تمكين قادة المستقبل من خلال تعليم إداري عالمي المستوى وخبراء في التدريس.</p>
+                    <div class="footer-bottom"><p>&copy; 2025 أكاديمية Korsatak. جميع الحقوق محفوظة.</p></div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ========== FLOATING BUTTONS ========== -->
+    <button id="lang-toggle-float" class="lang-float">🇪🇬 عربي</button>
+    <a href="https://wa.me/201234567890" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+    <button id="backToTop" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- ========== SCRIPTS ========== -->
+    <script src="js/main.js"></script>
+    <script src="js/menu.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/blog-page.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+{
+  "events": [
+    {
+      "id": 1,
+      "title_en": "Annual Business Conference 2025",
+      "title_ar": "المؤتمر السنوي للأعمال 2025",
+      "description_en": "Join industry leaders for a day of insights, networking, and innovation. Keynote speakers from top companies will share their expertise.",
+      "description_ar": "انضم إلى قادة الصناعة ليوم من الرؤى والتواصل والابتكار. متحدثون رئيسيون من كبرى الشركات يشاركون خبراتهم.",
+      "date": "2025-05-15",
+      "status": "past",
+      "facebook_url": "https://facebook.com/academy/event/1",
+      "instagram_url": "https://instagram.com/academy/event/1",
+      "tiktok_url": "https://tiktok.com/@academy/event/1",
+      "image": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&h=600&fit=crop"
+    },
+    {
+      "id": 2,
+      "title_en": "Digital Marketing Workshop",
+      "title_ar": "ورشة عمل التسويق الرقمي",
+      "description_en": "Learn the latest SEO, social media, and content marketing strategies from industry experts.",
+      "description_ar": "تعلم أحدث استراتيجيات تحسين محركات البحث والتسويق عبر وسائل التواصل الاجتماعي من خبراء الصناعة.",
+      "date": "2025-06-10",
+      "status": "upcoming",
+      "facebook_url": "https://facebook.com/academy/event/2",
+      "instagram_url": "https://instagram.com/academy/event/2",
+      "tiktok_url": "https://tiktok.com/@academy/event/2",
+      "image": "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=600&fit=crop"
+    },
+    {
+      "id": 3,
+      "title_en": "Leadership Summit",
+      "title_ar": "قمة القيادة",
+      "description_en": "Develop your leadership skills with interactive sessions and real-world case studies from successful leaders.",
+      "description_ar": "طور مهاراتك القيادية من خلال جلسات تفاعلية ودراسات حالة واقعية من قادة ناجحين.",
+      "date": "2025-07-20",
+      "status": "upcoming",
+      "facebook_url": "https://facebook.com/academy/event/3",
+      "instagram_url": "https://instagram.com/academy/event/3",
+      "tiktok_url": "https://tiktok.com/@academy/event/3",
+      "image": "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=600&fit=crop"
+    },
+    {
+      "id": 4,
+      "title_en": "Graduation Ceremony 2025",
+      "title_ar": "حفل التخرج 2025",
+      "description_en": "Celebrate the achievements of our graduates with family and friends. A memorable day for all.",
+      "description_ar": "احتفل بإنجازات خريجينا مع العائلة والأصدقاء. يوم لا ينسى للجميع.",
+      "date": "2025-08-05",
+      "status": "past",
+      "facebook_url": "https://facebook.com/academy/event/4",
+      "instagram_url": "https://instagram.com/academy/event/4",
+      "tiktok_url": "https://tiktok.com/@academy/event/4",
+      "image": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=800&h=600&fit=crop"
+    },
+    {
+      "id": 5,
+      "title_en": "Networking Night",
+      "title_ar": "ليلة التواصل المهني",
+      "description_en": "Connect with professionals from various industries in a relaxed evening setting.",
+      "description_ar": "تواصل مع محترفين من مختلف الصناعات في أمسية مميزة.",
+      "date": "2025-09-12",
+      "status": "upcoming",
+      "facebook_url": "https://facebook.com/academy/event/5",
+      "instagram_url": "https://instagram.com/academy/event/5",
+      "tiktok_url": "https://tiktok.com/@academy/event/5",
+      "image": "https://images.unsplash.com/photo-1515187029135-18ee286d815b?w=800&h=600&fit=crop"
+    },
+    {
+      "id": 6,
+      "title_en": "Innovation Hackathon",
+      "title_ar": "هاكاثون الابتكار",
+      "description_en": "Team up and solve real-world challenges with creative tech solutions.",
+      "description_ar": "شكل فريق وحل تحديات واقعية بحلول تقنية مبتكرة.",
+      "date": "2025-10-25",
+      "status": "past",
+      "facebook_url": "https://facebook.com/academy/event/6",
+      "instagram_url": "https://instagram.com/academy/event/6",
+      "tiktok_url": "https://tiktok.com/@academy/event/6",
+      "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?w=800&h=600&fit=crop"
+    }
+  ]
+}
