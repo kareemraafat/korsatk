@@ -8,6 +8,11 @@ let currentEditId = null;
 
 // Field definitions for each section
 const fieldDefinitions = {
+    partners: [
+        { name: 'name', label: 'Partner Name', type: 'text', required: true },
+        { name: 'logo', label: 'Logo URL', type: 'text', required: true },
+        { name: 'url', label: 'Website URL', type: 'text', required: true }
+    ],
     courses: [
         { name: 'title_en', label: 'Title (English)', type: 'text', required: true },
         { name: 'title_ar', label: 'Title (Arabic)', type: 'text', required: true },
