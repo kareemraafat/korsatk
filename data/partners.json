@@ -1,8 +1,38 @@
-const staticPartners = [
-    { logo: "https://placehold.co/200x100/667eea/white?text=Tech+Corp", name: "Tech Corp", url: "#" },
-    { logo: "https://placehold.co/200x100/667eea/white?text=Global+Sol", name: "Global Solutions", url: "#" },
-    { logo: "https://placehold.co/200x100/667eea/white?text=Smart+Edu", name: "Smart Education", url: "#" },
-    { logo: "https://placehold.co/200x100/667eea/white?text=Diamond", name: "Diamond Products", url: "#" },
-    { logo: "https://placehold.co/200x100/667eea/white?text=Reload", name: "Reload Caring", url: "#" },
-    { logo: "https://placehold.co/200x100/667eea/white?text=Rixdot", name: "Rixdot", url: "#" }
-];
+[
+  {
+    "id": 1,
+    "name": "Tech Corp",
+    "logo": "https://placehold.co/200x100/667eea/white?text=Tech+Corp",
+    "url": "#"
+  },
+  {
+    "id": 2,
+    "name": "Global Solutions",
+    "logo": "https://placehold.co/200x100/667eea/white?text=Global+Solutions",
+    "url": "#"
+  },
+  {
+    "id": 3,
+    "name": "Smart Education",
+    "logo": "https://placehold.co/200x100/667eea/white?text=Smart+Education",
+    "url": "#"
+  },
+  {
+    "id": 4,
+    "name": "Diamond Products",
+    "logo": "https://placehold.co/200x100/667eea/white?text=Diamond+Products",
+    "url": "#"
+  },
+  {
+    "id": 5,
+    "name": "Reload Caring",
+    "logo": "https://placehold.co/200x100/667eea/white?text=Reload+Caring",
+    "url": "#"
+  },
+  {
+    "id": 6,
+    "name": "Rixdot",
+    "logo": "https://placehold.co/200x100/667eea/white?text=Rixdot",
+    "url": "#"
+  }
+]
