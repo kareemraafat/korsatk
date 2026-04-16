@@ -1,14 +1,27 @@
 // branches.js - Load branches from API
 
-const API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/branches';
+const BRANCHES_API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/branches';
 
 async function loadBranches() {
     try {
-        const response = await fetch(API_URL);
+        const response = await fetch(BRANCHES_API_URL);
+        
+        if (!response.ok) {
+            console.log('Branches API returned', response.status, '- using static data');
+            loadStaticBranches();
+            return;
+        }
+        
         const branches = await response.json();
         const container = document.getElementById('branchesGrid');
         
         if (!container) return;
+        
+        if (!Array.isArray(branches) || branches.length === 0) {
+            console.log('No branches data available - using static data');
+            loadStaticBranches();
+            return;
+        }
         
         const isArabic = document.body.classList.contains('rtl') || 
                         document.documentElement.dir === 'rtl';
