@@ -1,8 +1,10 @@
-// featured-courses.js - Display featured courses only
+// featured-courses.js - Display featured courses only from API
+
+const API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/courses';
 
 async function loadFeaturedCourses() {
     try {
-        const response = await fetch('/data/courses.json');
+        const response = await fetch(API_URL);
         const data = await response.json();
         const courses = data.courses || data;
         const container = document.getElementById('featuredGrid');
@@ -54,7 +56,7 @@ async function loadFeaturedCourses() {
                     <div class="featured-price">
                         <span class="price">$${price} <small>/ ${isArabic ? 'شامل' : 'All included'}</small></span>
                         <a href="course-details.html?id=${course.id}" class="featured-btn">
-                            ${isArabic ? 'اشترك الان': 'Enroll Now'} <i class="fas fa-arrow-right"></i>
+                            ${isArabic ? 'اشترك الان' : 'Enroll Now'} <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
@@ -63,7 +65,7 @@ async function loadFeaturedCourses() {
         });
         
     } catch (error) {
-        console.error('Error loading featured courses:', error);
+        console.error('Error loading featured courses from API:', error);
         loadStaticFeaturedCourses();
     }
 }
@@ -141,7 +143,7 @@ function loadStaticFeaturedCourses() {
                 <div class="featured-price">
                     <span class="price">$${course.price} <small>/ ${isArabic ? 'شامل' : 'All included'}</small></span>
                     <a href="course-details.html?id=${course.id}" class="featured-btn">
-                        ${isArabic ? 'اشترك الان': 'Enroll Now'} <i class="fas fa-arrow-right"></i>
+                        ${isArabic ? 'اشترك الان' : 'Enroll Now'} <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
