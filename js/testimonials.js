@@ -1,14 +1,17 @@
-// testimonials.js - Load testimonials from JSON with language support
+// testimonials.js - Load testimonials from API with language support
+
+const API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/testimonials';
 
 let currentTestimonialsData = [];
 
 async function loadTestimonialsData() {
     try {
-        const response = await fetch('/data/testimonials.json');
-        currentTestimonialsData = await response.json();
+        const response = await fetch(API_URL);
+        const data = await response.json();
+        currentTestimonialsData = data.testimonials || data;
         displayTestimonials();
     } catch (error) {
-        console.error('Error loading testimonials:', error);
+        console.error('Error loading testimonials from API:', error);
         // Fallback static data
         currentTestimonialsData = [
             {
