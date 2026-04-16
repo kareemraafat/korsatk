@@ -1,5 +1,5 @@
 // partners.js - Auto Slider + Draggable + Links
-// Reads data from API instead of JSON file
+// Reads data from API
 
 const API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/partners';
 
