@@ -80,7 +80,7 @@ function switchToArabic() {
     document.body.style.textAlign = 'right';
     
     // Change button text
-    if (langFloat) langFloat.innerHTML = 'EN';
+    if (langFloat) langFloat.innerHTML = 'E';
     
     isArabic = true;
     
