@@ -1,6 +1,6 @@
 // instructors.js - Load instructors from API
 
-const API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/instructors';
+const API_URL = typeof INSTRUCTORS_API_URL !== 'undefined' ? INSTRUCTORS_API_URL : 'https://korsatk-admin.kareemraafat2017.workers.dev/api/instructors';
 
 async function displayInstructors() {
     try {
