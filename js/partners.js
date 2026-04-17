@@ -1,6 +1,6 @@
 // ============================================
 // PARTNERS SLIDER - Auto Slider + Draggable + Links
-// Uses unique global variable to avoid conflicts
+// Fixed: No more duplicate partners
 // ============================================
 
 const PARTNERS_API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/partners';
@@ -96,7 +96,6 @@ async function loadPartners() {
     try {
         const response = await fetch(PARTNERS_API_URL);
         
-        // Check if response is ok and has data
         if (!response.ok) {
             console.log('Partners API returned', response.status, '- using static data');
             loadStaticPartners();
@@ -108,7 +107,6 @@ async function loadPartners() {
         
         if (!container) return;
         
-        // Check if data is empty or not an array
         if (!Array.isArray(partners) || partners.length === 0) {
             console.log('No partners data available - using static data');
             loadStaticPartners();
@@ -117,18 +115,7 @@ async function loadPartners() {
         
         container.innerHTML = '';
         
-        partners.forEach(partner => {
-            const item = document.createElement('div');
-            item.className = 'partner-item';
-            item.innerHTML = `
-                <a href="${partner.url || '#'}" target="_blank" class="partner-link" rel="noopener noreferrer">
-                    <img class="partner-logo" src="${partner.logo}" alt="${partner.name || 'Partner'}">
-                </a>
-            `;
-            container.appendChild(item);
-        });
-        
-        // Duplicate for seamless scroll
+        // Add each partner ONCE only - no duplication
         partners.forEach(partner => {
             const item = document.createElement('div');
             item.className = 'partner-item';
@@ -164,17 +151,7 @@ function loadStaticPartners() {
         { logo: "https://placehold.co/110x70/667eea/white?text=Rixdot", name: "Rixdot", url: "#" }
     ];
     
-    staticPartners.forEach(partner => {
-        const item = document.createElement('div');
-        item.className = 'partner-item';
-        item.innerHTML = `
-            <a href="${partner.url}" target="_blank" class="partner-link" rel="noopener noreferrer">
-                <img class="partner-logo" src="${partner.logo}" alt="${partner.name}">
-            </a>
-        `;
-        container.appendChild(item);
-    });
-    
+    // Add each static partner ONCE only
     staticPartners.forEach(partner => {
         const item = document.createElement('div');
         item.className = 'partner-item';
