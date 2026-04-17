@@ -1,6 +1,6 @@
 // courses-page.js - Load and filter courses from API
 
-const API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/courses';
+const API_URL = typeof COURSES_API_URL !== 'undefined' ? COURSES_API_URL : 'https://korsatk-admin.kareemraafat2017.workers.dev/api/courses';
 
 let allCourses = [];
 let allCategories = [];
