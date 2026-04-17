@@ -4,8 +4,8 @@
 // Handles: Course display, Related courses, Register modal with branches
 // ============================================
 
-const COURSES_API = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/courses';
-const BRANCHES_API = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/branches';
+const COURSES_API = typeof COURSES_API_URL !== 'undefined' ? COURSES_API_URL : 'https://korsatk-admin.kareemraafat2017.workers.dev/api/courses';
+const BRANCHES_API = typeof BRANCHES_API_URL !== 'undefined' ? BRANCHES_API_URL : 'https://korsatk-admin.kareemraafat2017.workers.dev/api/branches';
 
 let allCourses = [];
 let allBranches = [];
