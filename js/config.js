@@ -1,16 +1,18 @@
 // ============================================
 // MASTER CONFIGURATION FILE
+// Change ONLY this file for each new client
 // ============================================
 
-// Worker URLs
+// ============ WORKER URLs ============
+// Change these URLs for each client
 const ADMIN_WORKER_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev';
-const BLOG_WORKER_URL = 'https://korsatk-blog.kareemraafat2017.workers.dev';  // 👈 الـ Worker اللي لسة شغاله
+const BLOG_WORKER_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev';  // 👈 Blog يقرأ من نفس الـ Admin Worker
 
-// API Endpoints
+// ============ API ENDPOINTS ============
 const ADMIN_API_URL = `${ADMIN_WORKER_URL}/api`;
-const BLOG_API_URL = `${BLOG_WORKER_URL}/api/blog`;  // 👈 صح
+const BLOG_API_URL = `${BLOG_WORKER_URL}/api/blog`;
 
-// Specific API URLs
+// ============ SPECIFIC API URLS ============
 const COURSES_API_URL = `${ADMIN_API_URL}/courses`;
 const INSTRUCTORS_API_URL = `${ADMIN_API_URL}/instructors`;
 const TESTIMONIALS_API_URL = `${ADMIN_API_URL}/testimonials`;
@@ -19,8 +21,11 @@ const EVENTS_API_URL = `${ADMIN_API_URL}/events`;
 const PARTNERS_API_URL = `${ADMIN_API_URL}/partners`;
 const SETTINGS_API_URL = `${ADMIN_API_URL}/settings`;
 
-// Make global
+// ============ EXPORT FOR GLOBAL USE ============
+// Make all config variables available globally
 if (typeof window !== 'undefined') {
+    window.ADMIN_WORKER_URL = ADMIN_WORKER_URL;
+    window.BLOG_WORKER_URL = BLOG_WORKER_URL;
     window.ADMIN_API_URL = ADMIN_API_URL;
     window.BLOG_API_URL = BLOG_API_URL;
     window.COURSES_API_URL = COURSES_API_URL;
