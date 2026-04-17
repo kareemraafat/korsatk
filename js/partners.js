@@ -3,7 +3,7 @@
 // Fixed: No more duplicate partners
 // ============================================
 
-const PARTNERS_API_URL = typeof PARTNERS_API_URL !== 'undefined' ? PARTNERS_API_URL : 'https://korsatk-admin.kareemraafat2017.workers.dev/api/partners';
+//const PARTNERS_API_URL = typeof PARTNERS_API_URL !== 'undefined' ? PARTNERS_API_URL : 'https://korsatk-admin.kareemraafat2017.workers.dev/api/partners';
 
 let partnersSlider;
 let partnersIsDown = false;
@@ -94,7 +94,7 @@ function stopPartnersAutoScroll() {
 
 async function loadPartners() {
     try {
-        const response = await fetch(PARTNERS_API_URL);
+        const response = await fetch(window.PARTNERS_API_URL);
         
         if (!response.ok) {
             console.log('Partners API returned', response.status, '- using static data');
