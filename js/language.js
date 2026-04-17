@@ -58,7 +58,7 @@ function switchToEnglish() {
     document.body.style.textAlign = 'left';
     
     // Change button text
-    if (langFloat) langFloat.innerHTML = '🇪🇬 عربي';
+    if (langFloat) langFloat.innerHTML = 'AR';
     
     isArabic = false;
     
@@ -80,7 +80,7 @@ function switchToArabic() {
     document.body.style.textAlign = 'right';
     
     // Change button text
-    if (langFloat) langFloat.innerHTML = '🇬🇧 English';
+    if (langFloat) langFloat.innerHTML = 'EN';
     
     isArabic = true;
     
