@@ -6,57 +6,42 @@ const API_BASE = 'https://korsatk-admin.kareemraafat2017.workers.dev/api';
 let currentTab = 'dashboard';
 let currentEditId = null;
 
-// Field definitions for each section
 const fieldDefinitions = {
     courses: [
-    { name: 'title_en', label: 'Title (English)', type: 'text', required: true },
-    { name: 'title_ar', label: 'Title (Arabic)', type: 'text', required: true },
-    { name: 'description_en', label: 'Description (English)', type: 'textarea', required: true },
-    { name: 'description_ar', label: 'Description (Arabic)', type: 'textarea', required: true },
-    { name: 'price_online', label: 'Online Price', type: 'number', required: true },
-    { name: 'price_offline', label: 'Offline Price', type: 'number', required: true },
-    { name: 'weeks', label: 'Duration (weeks)', type: 'number', required: true },
-    { name: 'lectures', label: 'Number of Lectures', type: 'number', required: true },
-    { name: 'level_en', label: 'Level (English)', type: 'select', options: ['Beginner', 'Intermediate', 'Advanced'] },
-    { name: 'level_ar', label: 'Level (Arabic)', type: 'select', options: ['مبتدئ', 'متوسط', 'متقدم'] },
-    { name: 'category', label: 'Category', type: 'text', required: true },
-    { name: 'image', label: 'Image URL', type: 'text' },
-    { name: 'video', label: 'Video URL', type: 'text' },
-    { name: 'featured', label: 'Featured', type: 'checkbox' },
-    { name: 'registration_link', label: 'Registration Link (WhatsApp/Google Form)', type: 'text' }
+        { name: 'title_en', label: 'Title (English)', type: 'text', required: true },
+        { name: 'title_ar', label: 'Title (Arabic)', type: 'text', required: true },
+        { name: 'description_en', label: 'Description (English)', type: 'textarea', required: true },
+        { name: 'description_ar', label: 'Description (Arabic)', type: 'textarea', required: true },
+        { name: 'price_online', label: 'Online Price', type: 'number', required: true },
+        { name: 'price_offline', label: 'Offline Price', type: 'number', required: true },
+        { name: 'weeks', label: 'Duration (weeks)', type: 'number', required: true },
+        { name: 'lectures', label: 'Number of Lectures', type: 'number', required: true },
+        { name: 'level_en', label: 'Level (English)', type: 'select', options: ['Beginner', 'Intermediate', 'Advanced'] },
+        { name: 'level_ar', label: 'Level (Arabic)', type: 'select', options: ['مبتدئ', 'متوسط', 'متقدم'] },
+        { name: 'category', label: 'Category', type: 'text', required: true },
+        { name: 'image', label: 'Image URL', type: 'text' },
+        { name: 'video', label: 'Video URL', type: 'text' },
+        { name: 'featured', label: 'Featured', type: 'checkbox' },
+        { name: 'registration_link', label: 'Registration Link (WhatsApp/Google Form)', type: 'text' }
     ],
     partners: [
         { name: 'name', label: 'Partner Name', type: 'text', required: true },
         { name: 'logo', label: 'Logo URL', type: 'text', required: true },
         { name: 'url', label: 'Website URL', type: 'text', required: true }
     ],
-    courses: [
+    instructors: [
+        { name: 'name_en', label: 'Name (English)', type: 'text', required: true },
+        { name: 'name_ar', label: 'Name (Arabic)', type: 'text', required: true },
         { name: 'title_en', label: 'Title (English)', type: 'text', required: true },
         { name: 'title_ar', label: 'Title (Arabic)', type: 'text', required: true },
-        { name: 'description_en', label: 'Description (English)', type: 'textarea', required: true },
-        { name: 'description_ar', label: 'Description (Arabic)', type: 'textarea', required: true },
-        { name: 'price', label: 'Price', type: 'number', required: true },
-        { name: 'weeks', label: 'Duration (weeks)', type: 'number', required: true },
-        { name: 'level_en', label: 'Level (English)', type: 'select', options: ['Beginner', 'Intermediate', 'Advanced'] },
-        { name: 'level_ar', label: 'Level (Arabic)', type: 'select', options: ['مبتدئ', 'متوسط', 'متقدم'] },
-        { name: 'category', label: 'Category', type: 'text', required: true },
+        { name: 'bio_en', label: 'Bio (English)', type: 'textarea', required: true },
+        { name: 'bio_ar', label: 'Bio (Arabic)', type: 'textarea', required: true },
+        { name: 'courses', label: 'Number of Courses', type: 'number', required: true },
+        { name: 'students', label: 'Number of Students', type: 'number', required: true },
         { name: 'image', label: 'Image URL', type: 'text' },
-        { name: 'video', label: 'Video URL', type: 'text' },
-        { name: 'featured', label: 'Featured', type: 'checkbox' }
-    ],
-    instructors: [
-    { name: 'name_en', label: 'Name (English)', type: 'text', required: true },
-    { name: 'name_ar', label: 'Name (Arabic)', type: 'text', required: true },
-    { name: 'title_en', label: 'Title (English)', type: 'text', required: true },
-    { name: 'title_ar', label: 'Title (Arabic)', type: 'text', required: true },
-    { name: 'bio_en', label: 'Bio (English)', type: 'textarea', required: true },
-    { name: 'bio_ar', label: 'Bio (Arabic)', type: 'textarea', required: true },
-    { name: 'courses', label: 'Number of Courses', type: 'number', required: true },
-    { name: 'students', label: 'Number of Students', type: 'number', required: true },
-    { name: 'image', label: 'Image URL', type: 'text' },
-    { name: 'facebook', label: 'Facebook URL', type: 'text' },
-    { name: 'instagram', label: 'Instagram URL', type: 'text' },
-    { name: 'whatsapp', label: 'WhatsApp URL', type: 'text' }
+        { name: 'facebook', label: 'Facebook URL', type: 'text' },
+        { name: 'instagram', label: 'Instagram URL', type: 'text' },
+        { name: 'whatsapp', label: 'WhatsApp URL', type: 'text' }
     ],
     testimonials: [
         { name: 'name_en', label: 'Name (English)', type: 'text', required: true },
