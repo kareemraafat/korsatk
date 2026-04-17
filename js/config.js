@@ -6,7 +6,7 @@
 // ============ WORKER URLs ============
 // 👇 غير دول بس لكل عميل جديد
 const ADMIN_WORKER_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev';
-const BLOG_WORKER_URL = 'https://korsatak-blog.kareemraafat2017.workers.dev';
+const BLOG_WORKER_URL = 'https://korsatk-blog.kareemraafat2017.workers.dev';
 
 // ============ API ENDPOINTS ============
 const ADMIN_API_URL = `${ADMIN_WORKER_URL}/api`;
