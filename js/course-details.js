@@ -23,12 +23,17 @@ async function loadCourseDetails() {
     }
     
     try {
-        // Fetch courses data from API
         const response = await fetch(COURSES_API);
+        
+        if (!response.ok) {
+            console.log('Courses API returned', response.status, '- using static fallback');
+            loadStaticCourse(courseId);
+            return;
+        }
+        
         const data = await response.json();
         allCourses = data.courses || data;
         
-        // Find the specific course
         const course = allCourses.find(c => Number(c.id) === Number(courseId));
         
         if (!course) {
@@ -36,17 +41,81 @@ async function loadCourseDetails() {
             return;
         }
         
-        // Load branches data for register modal
         await loadBranches();
-        
-        // Display all sections
         displayCourseDetails(course);
         displayRelatedCourses(course);
         initRegisterModal(course);
         
     } catch (error) {
         console.error('Error loading course from API:', error);
-        document.getElementById('courseDetailsContainer').innerHTML = '<div class="error-message">Error loading course data</div>';
+        loadStaticCourse(courseId);
+    }
+}
+
+// Fallback static course data
+function loadStaticCourse(courseId) {
+    const staticCourses = {
+        1: {
+            id: 1,
+            title_en: "Business Management",
+            title_ar: "إدارة الأعمال",
+            description_en: "Learn essential business management skills from industry experts.",
+            description_ar: "تعلم مهارات إدارة الأعمال الأساسية من خبراء الصناعة.",
+            price_online: 299,
+            price_offline: 399,
+            weeks: 24,
+            lectures: 48,
+            level_en: "Advanced",
+            level_ar: "متقدم",
+            category: "business",
+            image: "https://placehold.co/800x500/667eea/white?text=Business",
+            video: "https://www.youtube.com/embed/UGyNzAI--qQ",
+            registration_link: "#"
+        },
+        2: {
+            id: 2,
+            title_en: "Digital Marketing",
+            title_ar: "التسويق الرقمي",
+            description_en: "Master SEO, social media and content marketing.",
+            description_ar: "أتقن التسويق الرقمي ومحركات البحث.",
+            price_online: 249,
+            price_offline: 349,
+            weeks: 20,
+            lectures: 40,
+            level_en: "Intermediate",
+            level_ar: "متوسط",
+            category: "marketing",
+            image: "https://placehold.co/800x500/667eea/white?text=Marketing",
+            video: "https://www.youtube.com/embed/UGyNzAI--qQ",
+            registration_link: "#"
+        },
+        3: {
+            id: 3,
+            title_en: "HR Management",
+            title_ar: "إدارة الموارد البشرية",
+            description_en: "Learn modern HR practices and strategies.",
+            description_ar: "تعلم ممارسات واستراتيجيات الموارد البشرية الحديثة.",
+            price_online: 279,
+            price_offline: 379,
+            weeks: 22,
+            lectures: 44,
+            level_en: "Advanced",
+            level_ar: "متقدم",
+            category: "hr",
+            image: "https://placehold.co/800x500/667eea/white?text=HR",
+            video: "https://www.youtube.com/embed/UGyNzAI--qQ",
+            registration_link: "#"
+        }
+    };
+    
+    const course = staticCourses[courseId];
+    if (course) {
+        allCourses = Object.values(staticCourses);
+        displayCourseDetails(course);
+        displayRelatedCourses(course);
+        initRegisterModal(course);
+    } else {
+        document.getElementById('courseDetailsContainer').innerHTML = '<div class="error-message">Course not found</div>';
     }
 }
 
@@ -56,10 +125,13 @@ async function loadCourseDetails() {
 async function loadBranches() {
     try {
         const response = await fetch(BRANCHES_API);
-        allBranches = await response.json();
+        if (response.ok) {
+            allBranches = await response.json();
+        } else {
+            throw new Error('Branches API failed');
+        }
     } catch (error) {
         console.error('Error loading branches from API:', error);
-        // Fallback branches if API fails
         allBranches = [
             { id: 1, name_en: "Cairo Branch", name_ar: "فرع القاهرة" },
             { id: 2, name_en: "Alexandria Branch", name_ar: "فرع الإسكندرية" }
@@ -79,14 +151,14 @@ function displayCourseDetails(course) {
     const description = isArabic ? (course.description_ar || course.description_en) : course.description_en;
     const level = isArabic ? (course.level_ar || 'مبتدئ') : (course.level_en || 'Beginner');
     const weeks = course.weeks || 20;
-    const lectures = weeks * 2;
+    const lectures = course.lectures || (weeks * 2);
     const price = course.price_online || course.price || 0;
     const imageUrl = course.image || `https://placehold.co/800x500/667eea/white?text=${encodeURIComponent(title)}`;
     const videoUrl = course.video || 'https://www.youtube.com/embed/UGyNzAI--qQ';
+    const registrationLink = course.registration_link || '#';
     
     const html = `
         <div class="course-details-wrapper">
-            <!-- Left Column: Image, Title, Meta, Description, Video -->
             <div class="course-details-left">
                 <img class="course-image-main" src="${imageUrl}" alt="${title}">
                 <h1 class="course-title-main">${title}</h1>
@@ -110,7 +182,6 @@ function displayCourseDetails(course) {
                 </div>
             </div>
             
-            <!-- Right Column: Sidebar with Features, Price, Register Button -->
             <div class="course-details-right">
                 <div class="course-sidebar">
                     <h3 class="sidebar-title">${isArabic ? 'مميزات الكورس' : 'Course Features'}</h3>
@@ -126,12 +197,13 @@ function displayCourseDetails(course) {
                         <span class="price-amount">$${price} <small>/${isArabic ? 'شامل' : 'All included'}</small></span>
                     </div>
                     
-                    <a href="${course.registration_link || '#'}" class="register-btn" target="_blank"> ${isArabic ? 'سجل الآن' : 'Register Today'} <i class="fas fa-arrow-right"></i></a>
+                    <a href="${registrationLink}" class="register-btn" target="_blank">
+                        ${isArabic ? 'سجل الآن' : 'Register Today'} <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </div>
         
-        <!-- Related Courses Section (will be filled by JavaScript) -->
         <div class="related-courses" id="relatedCoursesContainer"></div>
     `;
     
@@ -148,7 +220,6 @@ function displayRelatedCourses(currentCourse) {
     const isArabic = document.body.classList.contains('rtl') || 
                     document.documentElement.dir === 'rtl';
     
-    // Filter courses from same category, excluding current course
     const related = allCourses.filter(c => c.category === currentCourse.category && Number(c.id) !== Number(currentCourse.id)).slice(0, 3);
     
     if (related.length === 0) {
@@ -192,7 +263,6 @@ function updateBranchDropdowns() {
     const isArabic = document.body.classList.contains('rtl') || 
                     document.documentElement.dir === 'rtl';
     
-    // Build options HTML from allBranches array
     let options = '<option value="" disabled selected>' + (isArabic ? 'اختر الفرع' : 'Select Branch') + '</option>';
     let optionsAr = '<option value="" disabled selected>' + (isArabic ? 'اختر الفرع' : 'Select Branch') + '</option>';
     
@@ -206,13 +276,12 @@ function updateBranchDropdowns() {
 }
 
 // ============================================
-// REGISTER MODAL FUNCTIONALITY (Dynamic Prices + Branches)
+// REGISTER MODAL FUNCTIONALITY
 // ============================================
 let selectedCoursePrice = 0;
 let selectedCourseName = '';
 
 function initRegisterModal(course) {
-    // Get prices from course object (online/offline)
     const onlinePriceValue = course.price_online || course.price || 0;
     const offlinePriceValue = course.price_offline || (course.price + 100);
     
@@ -226,12 +295,10 @@ function initRegisterModal(course) {
     
     if (!registerBtn) return;
     
-    // Update prices in the first modal
     const onlinePriceSpan = document.querySelectorAll('.option-price');
     if (onlinePriceSpan[0]) onlinePriceSpan[0].innerHTML = '$' + onlinePriceValue;
     if (onlinePriceSpan[1]) onlinePriceSpan[1].innerHTML = '$' + offlinePriceValue;
     
-    // Update option titles and descriptions based on language
     const isArabic = document.body.classList.contains('rtl') || 
                     document.documentElement.dir === 'rtl';
     const optionTitles = document.querySelectorAll('.register-option h4');
@@ -249,13 +316,11 @@ function initRegisterModal(course) {
         if (optionDescs[1]) optionDescs[1].innerText = 'Attend in-person at our branches';
     }
     
-    // Open first modal when clicking Register button
     registerBtn.addEventListener('click', (e) => {
         e.preventDefault();
         registerModal.style.display = 'flex';
     });
     
-    // Handle selection of Online/Offline option
     document.querySelectorAll('.register-option').forEach(option => {
         const selectBtn = option.querySelector('.select-option');
         if (selectBtn) {
@@ -263,14 +328,12 @@ function initRegisterModal(course) {
                 const type = option.getAttribute('data-type');
                 registerModal.style.display = 'none';
                 
-                // Show/hide branch selection based on type
                 const branchGroup = document.getElementById('branchSelectGroup');
                 const branchGroupAr = document.getElementById('branchSelectGroupAr');
                 
                 if (type === 'offline') {
                     if (branchGroup) branchGroup.style.display = 'block';
                     if (branchGroupAr) branchGroupAr.style.display = 'block';
-                    // Dynamically populate branch dropdowns
                     updateBranchDropdowns();
                 } else {
                     if (branchGroup) branchGroup.style.display = 'none';
@@ -282,7 +345,6 @@ function initRegisterModal(course) {
         }
     });
     
-    // Close modals when clicking X or outside
     closeBtns.forEach(btn => {
         btn.addEventListener('click', () => {
             registerModal.style.display = 'none';
@@ -295,7 +357,6 @@ function initRegisterModal(course) {
         if (e.target === registerFormModal) registerFormModal.style.display = 'none';
     });
     
-    // Handle English form submission
     const registerForm = document.getElementById('registerForm');
     if (registerForm) {
         registerForm.addEventListener('submit', async (e) => {
@@ -309,7 +370,6 @@ function initRegisterModal(course) {
         });
     }
     
-    // Handle Arabic form submission
     const registerFormAr = document.getElementById('registerFormAr');
     if (registerFormAr) {
         registerFormAr.addEventListener('submit', async (e) => {
@@ -325,7 +385,7 @@ function initRegisterModal(course) {
 }
 
 // ============================================
-// REFRESH WHEN LANGUAGE CHANGES
+// REFRESH ON LANGUAGE CHANGE
 // ============================================
 window.refreshCourseDetails = function() {
     loadCourseDetails();
