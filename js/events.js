@@ -5,7 +5,7 @@
 // Reads data from API instead of JSON file
 // ============================================
 
-const API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/events';
+const API_URL = typeof EVENTS_API_URL !== 'undefined' ? EVENTS_API_URL : 'https://korsatk-admin.kareemraafat2017.workers.dev/api/events';
 
 let allEvents = [];
 let visibleCount = 4; // Start with 4 events (2 rows of 2)
