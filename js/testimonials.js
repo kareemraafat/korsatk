@@ -1,12 +1,12 @@
 // testimonials.js - Load testimonials from API with language support
 
-const TESTIMONIALS_API_URL = typeof TESTIMONIALS_API_URL !== 'undefined' ? TESTIMONIALS_API_URL : 'https://korsatk-admin.kareemraafat2017.workers.dev/api/testimonials';
+//const TESTIMONIALS_API_URL = typeof TESTIMONIALS_API_URL !== 'undefined' ? TESTIMONIALS_API_URL : 'https://korsatk-admin.kareemraafat2017.workers.dev/api/testimonials';
 
 let currentTestimonialsData = [];
 
 async function loadTestimonialsData() {
     try {
-        const response = await fetch(TESTIMONIALS_API_URL);
+        const response = await fetch(window.TESTIMONIALS_API_URL);
         const data = await response.json();
         currentTestimonialsData = data.testimonials || data;
         displayTestimonials();
