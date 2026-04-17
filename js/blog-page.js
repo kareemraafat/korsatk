@@ -3,7 +3,7 @@
 // Reads data from API instead of JSON file
 // ============================================
 
-const API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/blog';
+const API_URL = typeof BLOG_API_URL !== 'undefined' ? BLOG_API_URL : 'https://korsatk-admin.kareemraafat2017.workers.dev/api/blog';
 
 let allPosts = [];
 let allCategories = [];
