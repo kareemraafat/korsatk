@@ -126,7 +126,7 @@ function displayCourseDetails(course) {
                         <span class="price-amount">$${price} <small>/${isArabic ? 'شامل' : 'All included'}</small></span>
                     </div>
                     
-                    <a href="#" class="register-btn">${isArabic ? 'سجل الآن' : 'Register Today'} <i class="fas fa-arrow-right"></i></a>
+                    <a href="${course.registration_link || '#'}" class="register-btn" target="_blank"> ${isArabic ? 'سجل الآن' : 'Register Today'} <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </div>
