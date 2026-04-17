@@ -1,10 +1,10 @@
 // latest-blog.js - Display latest 3 posts on homepage
 
-const BLOG_API_URL = 'https://korsatk-blog.kareemraafat2017.workers.dev/api/blog';
+//const BLOG_API_URL = 'https://korsatk-blog.kareemraafat2017.workers.dev/api/blog';
 
 async function loadLatestBlog() {
     try {
-        const response = await fetch(BLOG_API_URL);
+        const response = await fetch(window.BLOG_API_URL);
         const data = await response.json();
         const posts = data.posts || data;
         
