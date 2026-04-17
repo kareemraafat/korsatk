@@ -3,7 +3,7 @@
 // Fixed: No more duplicate partners
 // ============================================
 
-const PARTNERS_API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/partners';
+const PARTNERS_API_URL = typeof PARTNERS_API_URL !== 'undefined' ? PARTNERS_API_URL : 'https://korsatk-admin.kareemraafat2017.workers.dev/api/partners';
 
 let partnersSlider;
 let partnersIsDown = false;
