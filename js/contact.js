@@ -2,7 +2,7 @@
 // CONTACT PAGE - Load dynamic contact info from API
 // ============================================
 
-const API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/settings';
+const API_URL = typeof SETTINGS_API_URL !== 'undefined' ? SETTINGS_API_URL : 'https://korsatk-admin.kareemraafat2017.workers.dev/api/settings';
 
 async function loadContactInfo() {
     try {
