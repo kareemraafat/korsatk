@@ -1,6 +1,6 @@
 // latest-blog.js - Display latest 3 posts on homepage
 
-const LATEST_BLOG_API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/blog';
+const LATEST_BLOG_API_URL = typeof BLOG_API_URL !== 'undefined' ? BLOG_API_URL : 'https://korsatk-admin.kareemraafat2017.workers.dev/api/blog';
 
 async function loadLatestBlog() {
     try {
