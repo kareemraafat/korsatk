@@ -1,6 +1,6 @@
 // featured-courses.js - Display featured courses only from API
 
-const FEATURED_COURSES_API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/courses';
+const FEATURED_COURSES_API_URL = typeof COURSES_API_URL !== 'undefined' ? COURSES_API_URL : 'https://korsatk-admin.kareemraafat2017.workers.dev/api/courses';
 
 async function loadFeaturedCourses() {
     try {
