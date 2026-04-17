@@ -1343,17 +1343,18 @@ nav ul li a.actived {
 .featured-btn {
     background: linear-gradient(135deg, #ff6b6b, #ff9f4a);
     color: white;
-    padding: 12px 25px;
+    padding: 10px 11px;
     border-radius: 30px;
     text-decoration: none;
     font-weight: 700;
     font-size: 14px;
     transition: all 0.3s ease;
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: 8px;
     box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
     border: none;
+    width: 120px;
 }
 
 .featured-btn:hover {
