@@ -156,7 +156,7 @@ async function loadTabContent() {
             });
         }
         
-        html += `</tbody>赶t</div>`;
+        html += `</tbody></table></div>`;
         container.innerHTML = html;
         
     } catch (error) {
@@ -173,7 +173,7 @@ async function loadDashboard() {
     
     for (const section of sections) {
         try {
-            console.log(`🔍 Fetching dashboard stats for: ${section}`);
+           // console.log(`🔍 Fetching dashboard stats for: ${section}`);
             const response = await fetch(`${API_BASE}/${section}`);
             const data = await response.json();
             const items = Array.isArray(data) ? data : (data[section] || []);
@@ -250,7 +250,7 @@ function buildFormFields(item) {
 async function deleteItem(id) {
     if (confirm('Are you sure you want to delete this item?')) {
         try {
-            console.log(`🗑️ Deleting item ${id} from ${currentTab}`);
+            //console.log(`🗑️ Deleting item ${id} from ${currentTab}`);
             await fetch(`${API_BASE}/${currentTab}/${id}`, { method: 'DELETE' });
             loadTabContent();
         } catch (error) {
@@ -278,7 +278,7 @@ document.getElementById('itemForm').addEventListener('submit', async (e) => {
     
     try {
         if (currentEditId) {
-            console.log(`✏️ Updating item ${currentEditId} in ${currentTab}`);
+           // console.log(`✏️ Updating item ${currentEditId} in ${currentTab}`);
             data.id = currentEditId;
             await fetch(`${API_BASE}/${currentTab}/${currentEditId}`, {
                 method: 'PUT',
@@ -286,7 +286,7 @@ document.getElementById('itemForm').addEventListener('submit', async (e) => {
                 headers: { 'Content-Type': 'application/json' }
             });
         } else {
-            console.log(`➕ Adding new item to ${currentTab}`);
+           // console.log(`➕ Adding new item to ${currentTab}`);
             await fetch(`${API_BASE}/${currentTab}`, {
                 method: 'POST',
                 body: JSON.stringify(data),
@@ -346,6 +346,6 @@ if (window.location.pathname.includes('admin.html')) {
 }
 
 // Load initial dashboard
-console.log('🚀 Admin Panel starting...');
-console.log('📡 API_BASE:', API_BASE);
+//console.log('🚀 Admin Panel starting...');
+//console.log('📡 API_BASE:', API_BASE);
 loadDashboard();
