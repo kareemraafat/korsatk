@@ -1,7 +1,6 @@
 // branches.js - Load branches from API
 
-const BRANCHES_API_URL = 'https://korsatk-admin.kareemraafat2017.workers.dev/api/branches';
-
+const BRANCHES_API_URL = typeof BRANCHES_API_URL !== 'undefined' ? BRANCHES_API_URL : 'https://korsatk-admin.kareemraafat2017.workers.dev/api/branches';
 async function loadBranches() {
     try {
         const response = await fetch(BRANCHES_API_URL);
