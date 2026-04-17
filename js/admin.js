@@ -228,14 +228,18 @@ function buildFormFields(item) {
     
     let html = '';
     fields.forEach(field => {
-        const value = item ? (item[field.name] || '') : '';
+        let value = '';
+        if (item && item[field.name] !== undefined && item[field.name] !== null) {
+            value = item[field.name];
+            if (typeof value === 'number') value = value.toString();
+        }
         
         if (field.type === 'textarea') {
             html += `<div class="form-group"><label>${field.label}</label><textarea name="${field.name}" ${field.required ? 'required' : ''}>${escapeHtml(value)}</textarea></div>`;
         } else if (field.type === 'select') {
             html += `<div class="form-group"><label>${field.label}</label><select name="${field.name}" ${field.required ? 'required' : ''}>${field.options.map(opt => `<option value="${opt}" ${value === opt ? 'selected' : ''}>${opt}</option>`).join('')}</select></div>`;
         } else if (field.type === 'checkbox') {
-            html += `<div class="form-group"><label style="display:flex;align-items:center;gap:10px;"><input type="checkbox" name="${field.name}" ${value ? 'checked' : ''}> ${field.label}</label></div>`;
+            html += `<div class="form-group"><label style="display:flex;align-items:center;gap:10px;"><input type="checkbox" name="${field.name}" ${value === true || value === 'on' || value === 'true' ? 'checked' : ''}> ${field.label}</label></div>`;
         } else {
             html += `<div class="form-group"><label>${field.label}</label><input type="${field.type}" name="${field.name}" value="${escapeHtml(value)}" ${field.required ? 'required' : ''}></div>`;
         }
@@ -302,9 +306,11 @@ function closeModal() {
     document.getElementById('itemForm').reset();
     currentEditId = null;
 }
-
 function escapeHtml(str) {
-    if (!str) return '';
+    // If str is not a string, convert it to an empty string or string representation
+    if (str === undefined || str === null) return '';
+    if (typeof str !== 'string') str = String(str);
+    
     return str.replace(/[&<>]/g, function(m) {
         if (m === '&') return '&amp;';
         if (m === '<') return '&lt;';
