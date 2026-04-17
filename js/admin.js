@@ -28,16 +28,18 @@ const fieldDefinitions = {
         { name: 'featured', label: 'Featured', type: 'checkbox' }
     ],
     instructors: [
-        { name: 'name_en', label: 'Name (English)', type: 'text', required: true },
-        { name: 'name_ar', label: 'Name (Arabic)', type: 'text', required: true },
-        { name: 'title_en', label: 'Title (English)', type: 'text', required: true },
-        { name: 'title_ar', label: 'Title (Arabic)', type: 'text', required: true },
-        { name: 'bio_en', label: 'Bio (English)', type: 'textarea', required: true },
-        { name: 'bio_ar', label: 'Bio (Arabic)', type: 'textarea', required: true },
-        { name: 'image', label: 'Image URL', type: 'text' },
-        { name: 'facebook', label: 'Facebook URL', type: 'text' },
-        { name: 'instagram', label: 'Instagram URL', type: 'text' },
-        { name: 'tiktok', label: 'TikTok URL', type: 'text' }
+    { name: 'name_en', label: 'Name (English)', type: 'text', required: true },
+    { name: 'name_ar', label: 'Name (Arabic)', type: 'text', required: true },
+    { name: 'title_en', label: 'Title (English)', type: 'text', required: true },
+    { name: 'title_ar', label: 'Title (Arabic)', type: 'text', required: true },
+    { name: 'bio_en', label: 'Bio (English)', type: 'textarea', required: true },
+    { name: 'bio_ar', label: 'Bio (Arabic)', type: 'textarea', required: true },
+    { name: 'courses', label: 'Number of Courses', type: 'number', required: true },
+    { name: 'students', label: 'Number of Students', type: 'number', required: true },
+    { name: 'image', label: 'Image URL', type: 'text' },
+    { name: 'facebook', label: 'Facebook URL', type: 'text' },
+    { name: 'instagram', label: 'Instagram URL', type: 'text' },
+    { name: 'whatsapp', label: 'WhatsApp URL', type: 'text' }
     ],
     testimonials: [
         { name: 'name_en', label: 'Name (English)', type: 'text', required: true },
