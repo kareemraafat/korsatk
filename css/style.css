@@ -397,6 +397,12 @@ nav ul li a.actived {
     padding: 0 40px;
 }
 
+@media screen and (max-width:768px){
+    .container{
+        padding:0 20px;
+    }
+}
+
 .stats-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
